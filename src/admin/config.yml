@@ -32,13 +32,12 @@ collections:
         options: ["Tags", "created", "from", "config.yml"]
   - label: "Gallery"
     name: "gallery"
-    folder: "gallery"
+    folder: "src/gallery"
     create: true
     editor:
       preview: true
     fields:
       - { label: "Title", name: "title", widget: "string" }
-      - { label: "Description", name: "description", widget: "string" }
       - { label: "Body", name: "body", widget: "markdown" }
 
   - label: "Settings"
