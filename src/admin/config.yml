@@ -38,6 +38,7 @@ collections:
       preview: true
     fields:
       - { label: "Title", name: "title", widget: "string" }
+      - { label: "Layout", name: "layout", widget: "string", default: "default" }
       - { label: "Body", name: "body", widget: "markdown" }
 
   - label: "Settings"
