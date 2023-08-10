@@ -4,3 +4,5 @@ items:
     url: "/about"
   - text: Gallery
     url: "/gallery"
+  - text: Contact
+    url: "/contact"    
