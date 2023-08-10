@@ -1,0 +1,2 @@
+- [ ] /about: 2 column layout with photo, resize photo
+- [ ] Body text

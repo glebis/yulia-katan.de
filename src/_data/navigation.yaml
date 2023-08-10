@@ -2,9 +2,5 @@
 items:
   - text: About
     url: "/about"
-  - text: Exhibitions
-    url: "/exhibitions"
   - text: Gallery
     url: "/gallery"
-  - text: Shop
-    url: "/shop"

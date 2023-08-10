@@ -1,99 +1,102 @@
 ---
 layout: default
-title: Yulia Katan. Selected works
+title: Selected works
 path: gallery
 ---
 
 <div class="container mx-auto lg:h-screen flex flex-col justify-center items-center">
-  <h1>
+  <h1 class="mb-10">
     <strong class="">
       {{title}}
     </strong>
   </h1>
 
 
-  <h2> Selected works.</h2>
+<!--     <p class="gallery-item"><img  class="w-full" src="/static/img/content/thumb/15.jpg" alt="" title="Yulia Katan. Fake Perfection"></a></p>
+
+    <h3 class="gallery-item__title ">Fake Perfection</h3>
+    <p class="text-sm text-slate-700 text-center gallery-item__data">
+        <span class="text-xs">2022<br>
+        Markers, color pencils on paper</span>
+    </p> -->
 
 
-    <p><img  class="w-full" src="/static/img/content/01.jpg" alt="" title="Yulia Katan. A place of attraction"></p>
+<div id="gallery"></div>
 
-    <p class="text-sm text-slate-700 text-center">
-        <strong>A place of attraction</strong> <br><span class="text-xs">2022<br>Markers, color pencils on paper</span></p>  
+<script type="text/javascript">
+  
+const data = [
+  {
+    "group": {
+      "title": "",
+      "description": ""
+    },
+    "items": [
+    {
+      title: "Fake Perfection",
+      year: 2022, 
+      materials: "Markers, color pencils on paper",
+      imageSrc: "/static/img/content/thumb/15.jpg"
+    },
+    {
+      title: "The Vessel",
+      year: 2022,
+      measures: "20cm",      
+      materials: "Embrodiery",
+      imageSrc: "/static/img/content/thumb/14.jpg"
+    },
 
+    {
+        title: "Shedding",
+        year: 2022,
+        measures: "25×25cm",
+        materials: "Color pencils on paper",
+        imageSrc: "/static/img/content/thumb/12.jpg"
 
-    <p><img  class="w-full" src="/static/img/content/02.jpg" alt="" title="Yulia Katan"></p>
+      }
+    ]
+  }
 
-    <p class="text-sm text-slate-700 text-center">
-        <strong></strong> <br><span class="text-xs"><br></span></p>  
+];
 
+let galleryHTML = '';
 
-    <p><img  class="w-full" src="/static/img/content/03.jpg" alt="" title="Yulia Katan"></p>
+for (let group of data) {
 
-    <p class="text-sm text-slate-700 text-center">
-        <strong></strong> <br><span class="text-xs"><br></span></p>  
+  galleryHTML += `
+    <h2 class="gallery__title">${group.group.title}</h2>
+    <p class="gallery__description">${group.group.description}</p>
+  `;
 
+  for (let item of group.items) {
+  
+    galleryHTML += `
+      <div class="gallery-item space-y-1 mb-12 ">
+        <img src="${item.imageSrc}" alt="${item.imageAlt}" title="Yulia Katan. ${item.title}"  loading="lazy" class="inset-0 mb-4">
+        <h3 class="gallery-item gallery-item__title ml-10 mt-3 mr-10">${item.title}</h3>
+        <p class="gallery-item__text ml-10 mr-10 mt-3">
+          <span class="gallery-item__year  text-sm text-slate-700">${item.year}</span><br>
+          <span  class="gallery-item__materials text-sm text-slate-700">${item.materials}</span><br>`;
+    if(item.measures!==undefined) galleryHTML += `<span  class="gallery-item__materials  text-sm text-slate-700">${item.measures}</span>`;
+    galleryHTML += `
+        </p>
+      </div>
+    `;
 
-    <p><img  class="w-full" src="/static/img/content/04.jpg" alt="" title="Yulia Katan"></p>
+  }
 
-    <p class="text-sm text-slate-700 text-center">
-        <strong></strong> <br><span class="text-xs"><br></span></p>  
-
-
-    <p><img  class="w-full" src="/static/img/content/05.jpg" alt="" title="Yulia Katan"></p>
-
-    <p class="text-sm text-slate-700 text-center">
-        <strong></strong> <br><span class="text-xs"><br></span></p>  
-
-
-    <p><img  class="w-full" src="/static/img/content/06.jpg" alt="" title="Yulia Katan"></p>
-
-    <p class="text-sm text-slate-700 text-center">
-        <strong></strong> <br><span class="text-xs"><br></span></p>  
-
-    <p><img  class="w-full" src="/static/img/content/07.jpg" alt="" title="Yulia Katan"></p>
-
-    <p class="text-sm text-slate-700 text-center">
-        <strong></strong> <br><span class="text-xs"><br></span></p>  
-
-
-    <p><img  class="w-full" src="/static/img/content/08.jpg" alt="" title="Yulia Katan"></p>
-
-    <p class="text-sm text-slate-700 text-center">
-        <strong></strong> <br><span class="text-xs"><br></span></p>  
-
-
-    <p><img  class="w-full" src="/static/img/content/09.jpg" alt="" title="Yulia Katan"></p>
-
-    <p class="text-sm text-slate-700 text-center">
-        <strong></strong> <br><span class="text-xs"><br></span></p>  
-
-    <p><img  class="w-full" src="/static/img/content/10.jpg" alt="" title="Yulia Katan"></p>
-
-    <p class="text-sm text-slate-700 text-center">
-        <strong></strong> <br><span class="text-xs"><br></span></p>  
-
-
-    <p><img  class="w-full" src="/static/img/content/11.jpg" alt="" title="Yulia Katan"></p>
-
-    <p class="text-sm text-slate-700 text-center">
-        <strong></strong> <br><span class="text-xs"><br></span></p>  
-
-    <p><img  class="w-full" src="/static/img/content/12.jpg" alt="" title="Yulia Katan"></p>
-
-    <p class="text-sm text-slate-700 text-center">
-        <strong></strong> <br><span class="text-xs"><br></span></p>  
+}
 
 
-    <p><img  class="w-full" src="/static/img/content/13.jpg" alt="" title="Yulia Katan"></p>
 
-    <p class="text-sm text-slate-700 text-center">
-        <strong></strong> <br><span class="text-xs"><br></span></p>  
+const gallery = document.getElementById('gallery');
+
+gallery.innerHTML = galleryHTML;
+
+</script>
 
 
-    <p><img  class="w-full" src="/static/img/content/14.jpg" alt="" title="Yulia Katan"></p>
 
-    <p class="text-sm text-slate-700 text-center">
-        <strong></strong> <br><span class="text-xs"><br></span></p>  
 
 
 </div>
