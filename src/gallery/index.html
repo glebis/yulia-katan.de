@@ -53,21 +53,107 @@ const data = [
       imageSrc: "/static/img/content/thumb/13.jpg"
     },
     {
-      title: "Antagonism",
-      year: 2022,
-      measures: "60x80cm",      
-      materials: "Markers, color pencils on paper",
-      imageSrc: "/static/img/content/thumb/02.jpg"
-    },
-
-    {
         title: "Shedding",
         year: 2022,
         measures: "25×25cm",
         materials: "Color pencils on paper",
         imageSrc: "/static/img/content/thumb/12.jpg"
 
-      }
+      },    
+    {
+        title: "A place of attraction",
+        year: 2022,
+        measures: "25×25cm",
+        materials: "Markers, color pencils on paper",
+        imageSrc: "/static/img/content/thumb/01.jpg"
+
+      },    
+    {
+      title: "Antagonism",
+      year: 2022,
+      measures: "60x80cm",      
+      materials: "Markers, color pencils on paper",
+      imageSrc: "/static/img/content/thumb/02.jpg"
+    },
+    {
+      title: "The Body",
+      year: 2023,
+      measures: "60x50cm",      
+      materials: "Wood, oil, fabrics, keramoplast",
+      imageSrc: "/static/img/content/thumb/18.jpg"
+    },
+
+    {
+      title: "Locked Garden",
+      year: 2022,
+      measures: "60x50cm",      
+      materials: "Markers, color pencils on paper",
+      imageSrc: "/static/img/content/thumb/11.jpg"
+    },
+    {
+      title: "Stroll",
+      year: 2021,
+      measures: "30x50cm",      
+      materials: "Markers, color pencils on paper",
+      imageSrc: "/static/img/content/thumb/03.jpg"
+    },
+    {
+      title: "Brothers",
+      year: 2021,
+      measures: "30x50cm",      
+      materials: "Markers, color pencils on paper",
+      imageSrc: "/static/img/content/thumb/04.jpg"
+    },
+    {
+      title: "Bounce",
+      year: 2021,
+      measures: "30x50cm",      
+      materials: "Markers, color pencils on paper",
+      imageSrc: "/static/img/content/thumb/05.jpg"
+    },
+
+
+    {
+      title: "Ripe Dawn",
+      year: 2023,
+      measures: "100x80",      
+      materials: "Oil on canvas",
+      imageSrc: "/static/img/content/thumb/16.jpg"
+    },
+
+    {
+      title: "Shell",
+      year: 2022,
+      measures: "30х50",      
+      materials: "Markers, color pencils on paper",
+      imageSrc: "/static/img/content/thumb/10.jpg"
+    },
+    {
+      title: "Forgiveness",
+      year: 2022,
+      measures: "30х50",      
+      materials: "Markers, color pencils on paper",
+      imageSrc: "/static/img/content/thumb/09.jpg"
+    },
+    {
+      title: "???",
+      year: 2022,
+      measures: "30х50",      
+      materials: "Markers, color pencils on paper",
+      imageSrc: "/static/img/content/thumb/08.jpg"
+    },
+
+    {
+      title: "The Tail",
+      year: 2023,
+      measures: "60x50cm",      
+      materials: "Oil on canvas",
+      imageSrc: "/static/img/content/thumb/17.jpg"
+    },
+
+
+
+
     ]
   }
 
@@ -87,12 +173,12 @@ for (let group of data) {
     galleryHTML += `
       <div class="gallery-item space-y-1 mb-12 ">
         <img src="${item.imageSrc}" alt="${item.imageAlt}" title="Yulia Katan. ${item.title}"  loading="lazy" class="inset-0 mb-4">
-        <h3 class="gallery-item gallery-item__title ml-10 mt-3 mr-10">${item.title}</h3>
-        <p class="gallery-item__text ml-10 mr-10 mt-3">
-          <span class="gallery-item__year  text-sm text-slate-700">${item.year}</span><br>
+        <h3 class="gallery-item gallery-item__title ml-10 mt-3 mb-1 mr-10 text-lg">${item.title}</h3>
+        <p class="gallery-item__text ml-10 mr-10 mt-1">
+          
           <span  class="gallery-item__materials text-sm text-slate-700">${item.materials}</span><br>`;
-    if(item.measures!==undefined) galleryHTML += `<span  class="gallery-item__materials  text-sm text-slate-700">${item.measures}</span>`;
-    galleryHTML += `
+    if(item.measures!==undefined) galleryHTML += `<span  class="gallery-item__measures font-mono  text-xs text-slate-700" style="letter-spacing: .1rem">${item.measures}</span><br>`;
+    galleryHTML += `<span class="gallery-item__year  text-xs font-mono tracking-wider text-slate-400 hover:text-slate-700" style="letter-spacing: .1rem">${item.year}</span><br>
         </p>
       </div>
     `;
