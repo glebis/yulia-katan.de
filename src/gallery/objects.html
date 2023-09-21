@@ -1,0 +1,188 @@
+---
+layout: default
+title: Selected works
+path: gallery
+---
+
+<div class="container mx-auto w-full max-w-2xl grid grid-cols-1 lg:grid-cols-1 gap-4 flex flex-col justify-center items-center">
+  <h1 class="mt-7  mb-10">
+    <strong class="">
+      {{title}}
+    </strong>
+  </h1>
+
+
+<div class="gallery-item space-y-1 mb-12 ">
+        <img src="/static/img/content/thumb/01.jpg" title="Yulia Katan. A place of attraction" loading="lazy" class="inset-0 mb-4">
+        <p class="gallery-item__text ml-10 mr-10 mt-1">
+          
+          <a href="/gallery/drawings/">Drawings</a>
+        </p>
+  </div>
+
+
+<!--     <p class="gallery-item"><img  class="w-full" src="/static/img/content/thumb/15.jpg" alt="" title="Yulia Katan. Fake Perfection"></a></p>
+
+    <h3 class="gallery-item__title ">Fake Perfection</h3>
+    <p class="text-sm text-slate-700 text-center gallery-item__data">
+        <span class="text-xs">2022<br>
+        Markers, color pencils on paper</span>
+    </p> -->
+
+
+<div id="gallery"></div>
+
+<script type="text/javascript">
+
+
+  
+const data = [
+  {
+
+    "group": {
+      "title": "",
+      "description": ""
+    },
+    "items": [
+    {
+      title: "Fake Perfection",
+      year: 2022, 
+      measures: "50×40cm",
+      materials: "Markers, color pencils on paper",
+      imageSrc: "/static/img/content/thumb/15.jpg"
+    },
+    {
+      title: "Hearing",
+      year: 2022,
+      measures: "25x25cm",      
+      materials: "Color pencils on paper",
+      imageSrc: "/static/img/content/thumb/13.jpg"
+    },
+    {
+        title: "Shedding",
+        year: 2022,
+        measures: "25×25cm",
+        materials: "Color pencils on paper",
+        imageSrc: "/static/img/content/thumb/12.jpg"
+
+      },    
+    {
+        title: "A place of attraction",
+        year: 2022,
+        measures: "25×25cm",
+        materials: "Markers, color pencils on paper",
+        imageSrc: "/static/img/content/thumb/01.jpg"
+
+      },    
+    {
+      title: "Antagonism",
+      year: 2022,
+      measures: "60x80cm",      
+      materials: "Markers, color pencils on paper",
+      imageSrc: "/static/img/content/thumb/02.jpg"
+    },
+
+
+    {
+      title: "Locked Garden",
+      year: 2022,
+      measures: "60x50cm",      
+      materials: "Markers, color pencils on paper",
+      imageSrc: "/static/img/content/thumb/11.jpg"
+    },
+    {
+      title: "Stroll",
+      year: 2021,
+      measures: "30x50cm",      
+      materials: "Markers, color pencils on paper",
+      imageSrc: "/static/img/content/thumb/03.jpg"
+    },
+    {
+      title: "Brothers",
+      year: 2021,
+      measures: "30x50cm",      
+      materials: "Markers, color pencils on paper",
+      imageSrc: "/static/img/content/thumb/04.jpg"
+    },
+    {
+      title: "Bounce",
+      year: 2021,
+      measures: "30x50cm",      
+      materials: "Markers, color pencils on paper",
+      imageSrc: "/static/img/content/thumb/05.jpg"
+    },
+
+
+
+
+    {
+      title: "Shell",
+      year: 2022,
+      measures: "30х50",      
+      materials: "Markers, color pencils on paper",
+      imageSrc: "/static/img/content/thumb/10.jpg"
+    },
+    {
+      title: "Forgiveness",
+      year: 2022,
+      measures: "30х50",      
+      materials: "Markers, color pencils on paper",
+      imageSrc: "/static/img/content/thumb/09.jpg"
+    },
+    {
+      title: "Balance",
+      year: 2022,
+      measures: "30х50",      
+      materials: "Markers, color pencils on paper",
+      imageSrc: "/static/img/content/thumb/08.jpg"
+    },
+
+
+
+
+
+
+    ]
+  }
+
+];
+
+let galleryHTML = '';
+
+for (let group of data) {
+
+  galleryHTML += `
+    <h2 class="gallery__title">${group.group.title}</h2>
+    <p class="gallery__description">${group.group.description}</p>
+  `;
+
+  for (let item of group.items) {
+  
+    galleryHTML += `
+      <div class="gallery-item space-y-1 mb-12 ">
+        <img src="${item.imageSrc}" alt="${item.imageAlt}" title="Yulia Katan. ${item.title}"  loading="lazy" class="inset-0 mb-4">
+        <h3 class="gallery-item gallery-item__title ml-10 mt-3 mb-1 mr-10 text-lg">${item.title}</h3>
+        <p class="gallery-item__text ml-10 mr-10 mt-1">
+          
+          <span  class="gallery-item__materials text-sm text-slate-700">${item.materials}</span><br>`;
+    if(item.measures!==undefined) galleryHTML += `<span  class="gallery-item__measures font-mono  text-xs text-slate-700" style="letter-spacing: .1rem">${item.measures}</span><br>`;
+    galleryHTML += `<span class="gallery-item__year  text-xs font-mono tracking-wider text-slate-400 hover:text-slate-700" style="letter-spacing: .1rem">${item.year}</span><br>
+        </p>
+      </div>
+    `;
+
+  }
+
+}
+
+const gallery = document.getElementById('gallery');
+
+gallery.innerHTML = galleryHTML;
+
+</script>
+
+
+
+
+
+</div>

@@ -1,0 +1,87 @@
+---
+layout: default
+title: Selected works
+path: gallery
+---
+
+<div class="container mx-auto w-full max-w-2xl grid grid-cols-1 lg:grid-cols-1 gap-4 flex flex-col justify-center items-center">
+  <h1 class="mt-7  mb-10">
+    <strong class="">
+      {{title}}
+    </strong>
+  </h1>
+
+
+
+
+
+<div id="gallery"></div>
+
+<script type="text/javascript">
+
+
+  
+const data = [
+  {
+
+    "group": {
+      "title": "",
+      "description": ""
+    },
+    "items": [
+    {
+      title: "Ripe Dawn",
+      year: 2023,
+      measures: "100x80",      
+      materials: "Oil on canvas",
+      imageSrc: "/static/img/content/thumb/16.jpg"
+    },
+
+
+
+
+
+    ]
+  }
+
+];
+
+let galleryHTML = '';
+
+for (let group of data) {
+
+  galleryHTML += `
+    <h2 class="gallery__title">${group.group.title}</h2>
+    <p class="gallery__description">${group.group.description}</p>
+  `;
+
+  for (let item of group.items) {
+  
+    galleryHTML += `
+      <div class="gallery-item space-y-1 mb-12 ">
+        <img src="${item.imageSrc}" alt="${item.imageAlt}" title="Yulia Katan. ${item.title}"  loading="lazy" class="inset-0 mb-4">
+        <h3 class="gallery-item gallery-item__title ml-10 mt-3 mb-1 mr-10 text-lg">${item.title}</h3>
+        <p class="gallery-item__text ml-10 mr-10 mt-1">
+          
+          <span  class="gallery-item__materials text-sm text-slate-700">${item.materials}</span><br>`;
+    if(item.measures!==undefined) galleryHTML += `<span  class="gallery-item__measures font-mono  text-xs text-slate-700" style="letter-spacing: .1rem">${item.measures}</span><br>`;
+    galleryHTML += `<span class="gallery-item__year  text-xs font-mono tracking-wider text-slate-400 hover:text-slate-700" style="letter-spacing: .1rem">${item.year}</span><br>
+        </p>
+      </div>
+    `;
+
+  }
+
+}
+
+const gallery = document.getElementById('gallery');
+
+gallery.innerHTML = galleryHTML;
+
+</script>
+
+
+
+
+
+</div>
