@@ -4,5 +4,7 @@ items:
     url: "/about"
   - text: Gallery
     url: "/gallery"
+  - text: Shop
+    url: "https://www.etsy.com/shop/YuliaKatanArtwork"
   - text: Contact
     url: "/contact"    
