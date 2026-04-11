@@ -4,7 +4,7 @@ title: Selected works
 path: gallery
 ---
 
-<div class="container mx-auto w-full max-w-2xl grid grid-cols-1 lg:grid-cols-1 gap-4 flex flex-col justify-center items-center">
+<div class="container mx-auto w-full max-w-2xl grid grid-cols-1 lg:grid-cols-1 gap-4 flex flex-col justify-center items-center px-4">
   <h1 class="mt-7  mb-10">
     <strong class="">
       {{title}}
@@ -31,14 +31,7 @@ const data = [
     "items": [
     {
       title: "Fake Perfection",
-      year: 2022, 
-      measures: "50×40cm",
-      materials: "Markers, color pencils on paper",
-      imageSrc: "/static/img/content/thumb/15.jpg"
-    },
-    {
-      title: "Fake Perfection",
-      year: 2022, 
+      year: 2022,
       measures: "50×40cm",
       materials: "Markers, color pencils on paper",
       imageSrc: "/static/img/content/thumb/15.jpg"
@@ -184,10 +177,10 @@ for (let group of data) {
   for (let item of group.items) {
   
     galleryHTML += `
-      <div class="gallery-item space-y-1 mb-12 ">
-        <img src="${item.imageSrc}" alt="${item.imageAlt}" title="Yulia Katan. ${item.title}"  loading="lazy" class="inset-0 mb-4">
+      <div class="gallery-item space-y-1 mb-12 reveal">
+        <img src="${item.imageSrc}" alt="${item.imageAlt}" title="Yulia Katan. ${item.title}"  loading="lazy" class="inset-0 mb-4 img-hover">
         <h3 class="gallery-item gallery-item__title ml-10 mt-3 mb-1 mr-10 text-lg">${item.title}</h3>
-        <p class="gallery-item__text ml-10 mr-10 mt-1">
+        <p class="gallery-item__text ml-2 mr-2 sm:ml-10 sm:mr-10 mt-1">
           
           <span  class="gallery-item__materials text-sm text-slate-700">${item.materials}</span><br>`;
     if(item.measures!==undefined) galleryHTML += `<span  class="gallery-item__measures font-mono  text-xs text-slate-700" style="letter-spacing: .1rem">${item.measures}</span><br>`;
@@ -204,6 +197,8 @@ const gallery = document.getElementById('gallery');
 
 gallery.innerHTML = galleryHTML;
 
+// Init scroll reveal for dynamically added items
+if (window.initReveal) window.initReveal();
 </script>
 
 
