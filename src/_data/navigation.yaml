@@ -7,4 +7,6 @@ items:
   - text: Shop
     url: "https://www.etsy.com/shop/YuliaKatanArtwork"
   - text: Contact
-    url: "/contact"    
+    url: "/contact"
+  - text: Workshop
+    url: "/imagine"

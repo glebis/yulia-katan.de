@@ -4,7 +4,7 @@ title: Selected works
 path: gallery
 ---
 
-<div class="container mx-auto w-full max-w-2xl grid grid-cols-1 lg:grid-cols-1 gap-4 flex flex-col justify-center items-center">
+<div class="container mx-auto w-full max-w-2xl grid grid-cols-1 lg:grid-cols-1 gap-4 flex flex-col justify-center items-center px-4">
   <h1 class="mt-7  mb-10">
     <strong class="">
       {{title}}
@@ -12,19 +12,22 @@ path: gallery
   </h1>
 
 
-<div class="w-full max-w-2xl grid grid-cols-2 lg:grid-cols-2 mb-10 gap-4">
-  <article>
-        <a href="/gallery/drawings/"><img src="/static/img/content/thumb/01.jpg" title="Yulia Katan. A place of attraction" loading="lazy" class="inset-0 mb-4"></a>
-        <p class="gallery-item__text ml-10 mr-10 mt-1">
-          
+<div class="w-full max-w-2xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 mb-10 gap-4 px-4">
+  <article class="reveal">
+        <a href="/gallery/drawings/"><img src="/static/img/content/thumb/01.jpg" title="Yulia Katan. A place of attraction" loading="lazy" class="inset-0 mb-4 img-hover"></a>
+        <p class="gallery-item__text ml-2 mr-2 sm:ml-10 sm:mr-10 mt-1">
+
         <a href="/gallery/drawings/">Drawings</a>
         </p>
   </article>
-  <article>
-        <a href="/gallery/paintings/"><img src="/static/img/content/thumb/16.jpg" title="Yulia Katan. A place of attraction" loading="lazy" class="inset-0 mb-4"></a>
-        <p class="gallery-item__text ml-10 mr-10 mt-1">
-          
+  <article class="reveal" style="transition-delay: 0.1s">
         <a href="/gallery/paintings/">Paintings</a>
+  </article>
+  <article class="reveal" style="transition-delay: 0.2s">
+        <a href="/gallery/objects/"><img src="/static/objects/Extracted Memory I.jpg" title="Yulia Katan. Extracted Memory" loading="lazy" class="inset-0 mb-4 img-hover"></a>
+        <p class="gallery-item__text ml-2 mr-2 sm:ml-10 sm:mr-10 mt-1">
+
+        <a href="/gallery/objects/">Objects</a>
         </p>
   </article>
 

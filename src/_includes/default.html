@@ -10,6 +10,14 @@
     {% if description %}
       <meta name="description" content="{{description}}"/>
     {% endif %}
+    <meta property="og:title" content="{{title}}"/>
+    {% if description %}
+      <meta property="og:description" content="{{description}}"/>
+    {% endif %}
+    {% if og_image %}
+      <meta property="og:image" content="{{og_image}}"/>
+    {% endif %}
+    <meta property="og:type" content="website"/>
     {% block head %}{% endblock %}
     <link rel="stylesheet" type="text/css" href="/static/css/style.css"/>
     <link rel="icon" type="image/png" href="/static/img/favicon.png">
@@ -25,6 +33,27 @@
     {% include "./partials/footer.html" %}
 
     <script src="/static/js/alpine.js"></script>
+    <script>
+      (function() {
+        var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        var observer = reducedMotion ? null : new IntersectionObserver(function(entries) {
+          entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.1 });
+
+        window.initReveal = function() {
+          document.querySelectorAll('.reveal:not(.is-visible)').forEach(function(el) {
+            if (reducedMotion) { el.classList.add('is-visible'); }
+            else { observer.observe(el); }
+          });
+        };
+        window.initReveal();
+      })();
+    </script>
 
     {% if path == "home" %}
       <!-- Netlify Identity Widget -->
