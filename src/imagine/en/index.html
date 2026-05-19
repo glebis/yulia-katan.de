@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "From Your Own Head — an imagination workshop"
+title: "Imagine — an imagination workshop"
 description: "Online hands-on practices. 5 weeks: drawing, collage, sculpture. Starts June 14."
 og_image: "https://yuliakatan.com/static/img/imagine/og-imagine-en.png"
 path: imagine
@@ -11,27 +11,36 @@ path: imagine
 <style>
 body { background-color: #FAFAF7; overflow-x: hidden; }
 
-/* Decorative images: hidden on small phones, visible from 640px */
-.deco-11, .deco-21 { display: none; }
+/* Decorative images — sized in em so they scale with the heading clamp */
+.deco-11 { display: block; position: absolute; bottom: -1.5em; left: -2.5em; width: 4em; transform: scaleX(-1); }
+.deco-21 { display: block; position: absolute; bottom: -1.25em; right: -1.5em; width: 1.75em; transform: scaleX(-1) rotate(-25deg); }
 .deco-30 { position: absolute; top: -8rem; left: -6rem; width: 12rem; z-index: 0; transform: rotate(15deg) translate(-3px, -3px); }
 
+/* Mobile: pull larger decorations closer to centre so at least ~65% is visible */
+@media (max-width: 639px) {
+  .hero-subtitle { font-size: 1.0125rem; }
+  .deco-11 { width: 7.3em; max-width: none; left: calc(-2.5em - 2cm); bottom: auto; top: calc(-1.5em - 5mm - 2cm); transform: scaleX(-1); }
+  .deco-21 { display: none; }
+  .hero-wrapper h1, .hero-wrapper p { padding-left: 4rem; }
+  .hook-deco { left: calc(50% - 1.168em + 2rem) !important; top: -0.265em !important; }
+  .deco-43 { bottom: 1.6em !important; }
+}
+
 @media (min-width: 640px) {
-  .deco-11 { display: block; position: absolute; bottom: 4rem; right: -13rem; width: 11.5rem; }
-  .deco-21 { display: block; position: absolute; bottom: -2rem; left: -15rem; width: 14rem; transform: rotate(-25deg); }
   .deco-30 { top: -16.5rem; left: -18rem; width: 22rem; }
 }
 </style>
 
 <!-- Hero — full screen -->
 <header class="min-h-screen lg:h-screen flex flex-col items-center justify-center px-6 overflow-hidden" style="margin-top: -15vh;">
-  <img src="/static/img/imagine/01.png" alt="" class="w-full max-w-[36rem] lg:max-w-[44rem]" style="margin-bottom: 0;" />
-  <div style="position: relative; width: 100%; max-width: 44rem;">
-    <h1 class="tracking-tighter font-bold text-center" style="color: #CC7A00; font-family: 'General Sans', sans-serif; line-height: 0.9; font-size: clamp(4rem, 18vw, 8rem); white-space: nowrap;">Own Head</h1>
-    <p class="text-lg sm:text-xl lg:text-2xl text-gray-500 tracking-tight text-center mt-2">Five weeks of imagination practice<br>Drawing, collage, sculpture online</p>
-    <img src="/static/img/imagine/11.png" alt="" class="deco-11" />
+  <div class="hero-wrapper" style="position: relative; width: 100%; max-width: 44rem; font-size: clamp(4rem, 18vw, 8rem);">
+    <h1 class="tracking-tighter font-bold text-center" style="color: #CC7A00; font-family: 'General Sans', sans-serif; line-height: 0.9; font-size: 1em; white-space: nowrap; position: relative; z-index: 1;">Imagine</h1>
+    <p class="text-lg sm:text-xl lg:text-2xl text-gray-500 tracking-tight text-center hero-subtitle" style="margin-top: clamp(1.5rem, 5vw, 2.5rem); position: relative; z-index: 1;">Five weeks of imagination practice<br>Drawing, collage, sculpture online</p>
+    <img src="/static/img/imagine/41.png" alt="" class="deco-11" />
     <img src="/static/img/imagine/21.png" alt="" class="deco-21" />
-    <img src="/static/img/imagine/17.png" alt="" style="position: absolute; bottom: -7rem; right: -1rem; width: 5.5rem; transform: scaleX(-1) rotate(8deg);" />
-    <img src="/static/img/imagine/18.png" alt="" style="position: absolute; bottom: -9rem; right: 7rem; width: 4.5rem; transform: scaleX(-1) rotate(-22deg);" />
+    <img src="/static/img/imagine/43.png" alt="" class="deco-43" style="position: absolute; bottom: 1.125em; right: -0.375em; width: 1.125em;" />
+    <img src="/static/img/imagine/44.png" alt="" style="position: absolute; bottom: -1.875em; left: 70%; transform: translateX(-50%); width: 2.25em;" />
+    <img src="/static/img/imagine/47.png" alt="" class="hook-deco" style="position: absolute; top: calc(-0.265em + 0.1mm); left: calc(50% - 1.168em); transform: translateX(-50%); width: 0.59em; z-index: 2;" />
   </div>
 </header>
 
