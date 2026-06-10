@@ -4,8 +4,8 @@ title: Yulia Katan
 path: home
 ---
 
-<div class="flex-1 flex flex-col">
-  <div class="container mx-auto px-6 lg:px-0">
+<div class="flex-1 flex flex-col lg:grid lg:grid-cols-12 lg:gap-x-[23px] lg:px-9 lg:content-start">
+  <div class="px-6 lg:px-0 lg:col-start-3 lg:col-span-10">
     <h1 class="animate-fade-up text-left lg:!text-5xl mt-2 lg:mt-7">
       <strong class="" style="font-weight: 300; font-size: 77%;">
         {{title}}
@@ -13,7 +13,9 @@ path: home
     </h1>
   </div>
 
-  <div class="animate-fade-up animate-fade-up-delay-1 flex-1 w-full flex items-start justify-center px-6 lg:px-12 pt-4 lg:pt-10 pb-6">
-  {% include "./_includes/partials/content.html" %}
+  <div class="animate-fade-up animate-fade-up-delay-1 px-6 lg:px-0 lg:col-start-3 lg:col-span-10 lg:mt-6">
+    <a href="/gallery" class="block w-full">
+      <img class="img-hover" src="/static/img/content/thumb/Winds.jpg" style="max-width: 100%; max-height: calc(100vh - 240px); width: auto; height: auto; display: block;" alt="Yulia Katan. Winds" title="Yulia Katan. Winds">
+    </a>
   </div>
 </div>
