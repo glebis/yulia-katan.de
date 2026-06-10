@@ -4,6 +4,26 @@
 
 /*Your Custom CSS Goes here*/
 
+/* Home wordmark: ❦ icon with the "Y" overlapping it */
+.wm {
+  display: inline-flex;
+  align-items: center;
+  line-height: 1;
+  white-space: nowrap;
+}
+.wm__icon {
+  font-size: 1.7rem;
+  font-weight: 700;
+}
+.wm__text {
+  font-size: 2rem;
+  font-weight: 300;
+  letter-spacing: -0.01em;
+  margin-left: -0.62rem;   /* pull the name left so the Y rides onto the icon */
+  position: relative;
+  z-index: 1;
+}
+
 h1 {
   @apply text-3xl tracking-tighter mb-3 text-center md:text-4xl lg:text-7xl;
 }

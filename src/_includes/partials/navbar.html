@@ -1,9 +1,15 @@
 <div class="w-full lg:fixed lg:inset-y-0 lg:left-0 lg:w-60 lg:z-40">
     <nav class="flex items-center justify-center lg:justify-start lg:items-start lg:flex-col lg:h-full flex-wrap p-6 lg:py-9 lg:pl-9 lg:pr-6" x-data="{ isOpen: false }" @keydown.escape="isOpen = false"  @click.away="isOpen = false">
-        <!--Logo etc-->
+        <!--Logo / wordmark-->
         <div class="flex items-center lg:mb-10">
+            {% if path == "home" %}
+            <a href="/" class="wm text-black hover:text-red-500" aria-label="Yulia Katan — home">
+                <span class="wm__icon">❦</span><span class="wm__text">Yulia&nbsp;Katan</span>
+            </a>
+            {% else %}
             <a href="/" class="text-black font-bold text-lg hover:text-red-500">
                 ❦</a>
+            {% endif %}
         </div>
 
         <!--Toggle button (hidden on large screens)-->
