@@ -4,6 +4,7 @@ items:
     url: "/about"
   - text: Gallery
     url: "/gallery"
+    section: gallery
     children:
       - text: Paintings
         url: "/gallery/paintings/"

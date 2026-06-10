@@ -30,11 +30,11 @@
                         <li class="nav__item mr-3 lg:mr-0 lg:mb-1 group">
                             <a @click="isOpen = false" class="text-ml inline-block text-gray-500 no-underline hover:text-indigo-500 py-2 px-4 lg:px-0" href="{{ item.url }}">{{ item.text }}</a>
                             {% if item.children %}
-                                <div class="grid grid-rows-[1fr] lg:grid-rows-[0fr] lg:group-hover:grid-rows-[1fr] transition-[grid-template-rows] duration-300 ease-out">
+                                <div class="grid transition-[grid-template-rows] duration-300 ease-out {% if item.section and path == item.section %}grid-rows-[1fr]{% else %}grid-rows-[1fr] lg:grid-rows-[0fr] lg:group-hover:grid-rows-[1fr]{% endif %}">
                                     <ul class="overflow-hidden list-reset text-center lg:text-left">
                                         {% for child in item.children %}
                                             <li class="lg:mb-1">
-                                                <a @click="isOpen = false" class="text-ml inline-block text-gray-400 no-underline hover:text-indigo-500 py-1 px-4 lg:px-0 lg:pl-3" href="{{ child.url }}">{{ child.text }}</a>
+                                                <a @click="isOpen = false" class="text-ml inline-block no-underline hover:text-indigo-500 py-1 px-4 lg:px-0 lg:pl-3 {% if page.url == child.url %}text-gray-700{% else %}text-gray-400{% endif %}" href="{{ child.url }}">{{ child.text }}</a>
                                             </li>
                                         {% endfor %}
                                     </ul>
