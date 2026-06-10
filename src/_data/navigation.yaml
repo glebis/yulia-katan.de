@@ -10,7 +10,7 @@ items:
         url: "/gallery/paintings/"
       - text: Drawings
         url: "/gallery/drawings/"
-      - text: Objects
+      - text: Extracted Bones
         url: "/gallery/objects/"
       - text: Apartment Vascular System
         url: "/gallery/apartment-vascular-system/"
