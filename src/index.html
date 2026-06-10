@@ -4,14 +4,16 @@ title: Yulia Katan
 path: home
 ---
 
-<div class="container mx-auto min-h-screen lg:h-screen flex flex-col justify-start items-start px-4">
-  <h1 class="animate-fade-up text-left lg:!text-5xl lg:mt-7">
-    <strong class="">
-      {{title}}
-    </strong>
-  </h1>
+<div class="min-h-screen flex flex-col">
+  <div class="container mx-auto px-6 lg:px-0">
+    <h1 class="animate-fade-up text-left lg:!text-5xl mt-2 lg:mt-7">
+      <strong class="">
+        {{title}}
+      </strong>
+    </h1>
+  </div>
 
-  <div class="animate-fade-up animate-fade-up-delay-1">
+  <div class="animate-fade-up animate-fade-up-delay-1 flex-1 w-full flex items-start lg:items-center justify-center px-6 lg:px-12 py-6 lg:py-6">
   {% include "./_includes/partials/content.html" %}
   </div>
 </div>
