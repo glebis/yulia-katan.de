@@ -1,0 +1,59 @@
+<!-- 12-column layout grid overlay (dev aid). Margins 36px, gutter 23px.
+     Toggle with the "G" key. Visible by default on localhost. -->
+<div id="grid-overlay" aria-hidden="true">
+  <div class="grid-overlay__inner">
+    <span class="grid-overlay__col"></span>
+    <span class="grid-overlay__col"></span>
+    <span class="grid-overlay__col"></span>
+    <span class="grid-overlay__col"></span>
+    <span class="grid-overlay__col"></span>
+    <span class="grid-overlay__col"></span>
+    <span class="grid-overlay__col"></span>
+    <span class="grid-overlay__col"></span>
+    <span class="grid-overlay__col"></span>
+    <span class="grid-overlay__col"></span>
+    <span class="grid-overlay__col"></span>
+    <span class="grid-overlay__col"></span>
+  </div>
+</div>
+
+<style>
+  #grid-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    pointer-events: none;
+    display: none;
+  }
+  #grid-overlay.is-on { display: block; }
+  .grid-overlay__inner {
+    height: 100%;
+    box-sizing: border-box;
+    padding: 36px;                 /* margins: top/bottom/left/right 36px */
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: 23px;              /* gutter 23px */
+  }
+  .grid-overlay__col {
+    height: 100%;
+    background: rgba(255, 0, 80, 0.08);
+    outline: 1px solid rgba(255, 0, 80, 0.18);
+  }
+</style>
+
+<script>
+  (function () {
+    var overlay = document.getElementById('grid-overlay');
+    if (!overlay) return;
+    var isLocal = /^(localhost|127\.0\.0\.1)$/.test(location.hostname);
+    var wantGrid = /[?&]grid\b/.test(location.search);
+    if (isLocal || wantGrid) overlay.classList.add('is-on');
+    document.addEventListener('keydown', function (e) {
+      if ((e.key === 'g' || e.key === 'G') && !e.metaKey && !e.ctrlKey && !e.altKey) {
+        var t = e.target;
+        if (t && (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable)) return;
+        overlay.classList.toggle('is-on');
+      }
+    });
+  })();
+</script>
