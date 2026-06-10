@@ -1,0 +1,57 @@
+---
+layout: default
+title: Apartment Vascular System
+path: gallery
+---
+
+<div class="container mx-auto w-full max-w-2xl grid grid-cols-1 lg:grid-cols-1 gap-4 flex flex-col justify-center items-center px-4">
+  <h1 class="mt-7  mb-10">
+    <strong class="">
+      {{title}}
+    </strong>
+  </h1>
+
+  <p class="text-slate-400 text-center max-w-prose">
+    Project page — content coming soon.
+  </p>
+
+  <div id="gallery"></div>
+
+  <script type="text/javascript">
+    // Add works here, then they render into #gallery (same pattern as the other project pages).
+    const data = [
+      {
+        "group": { "title": "", "description": "" },
+        "items": [
+          // {
+          //   title: "",
+          //   year: 2026,
+          //   measures: "",
+          //   materials: "",
+          //   imageSrc: "/static/img/content/thumb/.jpg"
+          // },
+        ]
+      }
+    ];
+
+    let galleryHTML = '';
+    for (let group of data) {
+      for (let item of group.items) {
+        galleryHTML += `
+          <div class="gallery-item space-y-1 mb-12 reveal">
+            <img src="${item.imageSrc}" alt="" title="Yulia Katan. ${item.title}" loading="lazy" class="inset-0 mb-4 img-hover">
+            <h3 class="gallery-item gallery-item__title ml-10 mt-3 mb-1 mr-10 text-lg">${item.title}</h3>
+            <p class="gallery-item__text ml-2 mr-2 sm:ml-10 sm:mr-10 mt-1">
+              <span class="gallery-item__materials text-sm text-slate-700">${item.materials}</span><br>`;
+        if (item.measures !== undefined) galleryHTML += `<span class="gallery-item__measures font-mono text-xs text-slate-700" style="letter-spacing: .1rem">${item.measures}</span><br>`;
+        galleryHTML += `<span class="gallery-item__year text-xs font-mono tracking-wider text-slate-400 hover:text-slate-700" style="letter-spacing: .1rem">${item.year}</span><br>
+            </p>
+          </div>`;
+      }
+    }
+
+    const gallery = document.getElementById('gallery');
+    gallery.innerHTML = galleryHTML;
+    if (window.initReveal) window.initReveal();
+  </script>
+</div>

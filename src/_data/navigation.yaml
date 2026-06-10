@@ -2,7 +2,7 @@
 items:
   - text: About
     url: "/about"
-  - text: Gallery
+  - text: Projects
     url: "/gallery"
     section: gallery
     children:
@@ -12,6 +12,8 @@ items:
         url: "/gallery/drawings/"
       - text: Objects
         url: "/gallery/objects/"
+      - text: Apartment Vascular System
+        url: "/gallery/apartment-vascular-system/"
   - text: Shop
     url: "https://www.etsy.com/shop/YuliaKatanArtwork"
   - text: Contact
