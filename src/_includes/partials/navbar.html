@@ -1,7 +1,7 @@
-<div class="{{ 'lg:fixed' if path == 'home' }} w-full">
-    <nav class="flex items-center justify-center lg:justify-between flex-wrap p-6 lg:px-0 container mx-auto" x-data="{ isOpen: false }" @keydown.escape="isOpen = false"  @click.away="isOpen = false">
+<div class="w-full lg:fixed lg:inset-y-0 lg:left-0 lg:w-60 lg:z-40">
+    <nav class="flex items-center justify-center lg:justify-start lg:items-start lg:flex-col lg:h-full flex-wrap p-6 lg:py-9 lg:pl-9 lg:pr-6" x-data="{ isOpen: false }" @keydown.escape="isOpen = false"  @click.away="isOpen = false">
         <!--Logo etc-->
-        <div class="flex items-center">
+        <div class="flex items-center lg:mb-10">
             <a href="/" class="text-black font-bold text-lg hover:text-red-500">
                 ❦</a>
         </div>
@@ -15,14 +15,14 @@
         </button>
 
         <!--Menu-->
-        <div class="w-full flex-grow lg:flex lg:items-center lg:w-auto text-center " :class="{ 'block shadow-3xl': isOpen, 'hidden': !isOpen }" x-show.transition="true">
+        <div class="w-full flex-grow lg:flex lg:flex-col lg:items-start lg:w-auto text-center lg:text-left " :class="{ 'block shadow-3xl': isOpen, 'hidden': !isOpen }" x-show.transition="true">
 
             {% if navigation.items %}
 
-                <ul class="pt-6 lg:pt-0 list-reset lg:flex justify-end flex-1 items-center">
+                <ul class="pt-6 lg:pt-0 list-reset lg:flex lg:flex-col justify-end lg:justify-start flex-1 items-center lg:items-start">
                     {% for item in navigation.items %}
-                        <li class="nav__item mr-3">
-                            <a @click="isOpen = false" class="text-ml inline-block text-gray-500 no-underline hover:text-indigo-500 py-2 px-4" href="{{ item.url }}">{{ item.text }}</a>
+                        <li class="nav__item mr-3 lg:mr-0 lg:mb-1">
+                            <a @click="isOpen = false" class="text-ml inline-block text-gray-500 no-underline hover:text-indigo-500 py-2 px-4 lg:px-0" href="{{ item.url }}">{{ item.text }}</a>
                         </li>
                     {% endfor %}
                 </ul>
