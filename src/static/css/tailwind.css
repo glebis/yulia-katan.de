@@ -14,6 +14,8 @@
 .wm__icon {
   font-size: 1.125rem;     /* small icon, like the ❦ on other pages */
   font-weight: 700;
+  position: relative;
+  top: -0.2em;             /* raise the icon by 2/10 of its height */
 }
 .wm__text {
   font-size: 2rem;         /* keep the name at its original size */
