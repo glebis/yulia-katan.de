@@ -31,6 +31,13 @@ h1 {
   letter-spacing: -0.01em;   /* unified tracking, matches the .wm wordmark */
 }
 
+/* Shared project (gallery section) title style: thin + 40% smaller.
+   Applies to every page with `path: gallery`, current and future. */
+.section-gallery h1 strong {
+  font-weight: 300;
+  font-size: 60%;
+}
+
 h3 {
   @apply text-2xl font-bold mb-3;
 }
