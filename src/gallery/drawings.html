@@ -2,207 +2,86 @@
 layout: default
 title: Selected works
 path: gallery
+fullwidth: true
 ---
 
-<div class="container mx-auto w-full max-w-2xl grid grid-cols-1 lg:grid-cols-1 gap-4 flex flex-col justify-center items-center px-4">
-  <h1 class="mt-7  mb-10">
-    <strong class="">
-      {{title}}
-    </strong>
-  </h1>
+<div class="flex-1 flex flex-col lg:grid lg:grid-cols-12 lg:gap-x-[23px] lg:px-9 lg:content-start">
+  <div class="px-6 lg:px-0 lg:col-start-3 lg:col-span-9">
+    <h1 class="mt-7 mb-10"><strong>{{title}}</strong></h1>
 
-
-
-
-
-<div id="gallery"></div>
-
-<script type="text/javascript">
-
-
-  
-const data = [
-  {
-
-    "group": {
-      "title": "",
-      "description": ""
-    },
-    "items": [
-    {
-      title: "Fake Perfection",
-      year: 2022,
-      measures: "50×40cm",
-      materials: "Markers, color pencils on paper",
-      imageSrc: "/static/img/content/thumb/15.jpg"
-    },
-    {
-      title: "Hearing",
-      year: 2022,
-      measures: "25x25cm",      
-      materials: "Color pencils on paper",
-      imageSrc: "/static/img/content/thumb/13.jpg"
-    },
-    {
-        title: "Shedding",
-        year: 2022,
-        measures: "25×25cm",
-        materials: "Color pencils on paper",
-        imageSrc: "/static/img/content/thumb/12.jpg"
-
-      },    
-    {
-        title: "A place of attraction",
-        year: 2022,
-        measures: "25×25cm",
-        materials: "Markers, color pencils on paper",
-        imageSrc: "/static/img/content/thumb/01.jpg"
-
-      },    
-    {
-        title: "Extraction",
-        year: 2023,
-        measures: "65x50",
-        materials: "Markers, color pencils on paper",
-        imageSrc: "/static/img/content/thumb/19.jpg"
-
-      },    
-    {
-        title: "Connection",
-        year: 2023,
-        measures: "15x15",
-        materials: "Markers, color pencils on paper",
-        imageSrc: "/static/img/content/thumb/20.jpg"
-
-      },    
-    {
-        title: "Feeding",
-        year: 2023,
-        measures: "15x15",
-        materials: "Markers, color pencils on paper",
-        imageSrc: "/static/img/content/thumb/21.jpg"
-
-      },   
-    {
-        title: "Darkside on a walk",
-        year: 2023,
-        measures: "15x15",
-        materials: "Markers, color pencils on paper",
-        imageSrc: "/static/img/content/thumb/22.jpg"
-
-      },   
-
-    {
-      title: "Antagonism",
-      year: 2022,
-      measures: "60x80cm",      
-      materials: "Markers, color pencils on paper",
-      imageSrc: "/static/img/content/thumb/02.jpg"
-    },
-
-
-    {
-      title: "Locked Garden",
-      year: 2022,
-      measures: "60x50cm",      
-      materials: "Markers, color pencils on paper",
-      imageSrc: "/static/img/content/thumb/11.jpg"
-    },
-    {
-      title: "Stroll",
-      year: 2021,
-      measures: "30x50cm",      
-      materials: "Markers, color pencils on paper",
-      imageSrc: "/static/img/content/thumb/03.jpg"
-    },
-    {
-      title: "Brothers",
-      year: 2021,
-      measures: "30x50cm",      
-      materials: "Markers, color pencils on paper",
-      imageSrc: "/static/img/content/thumb/04.jpg"
-    },
-    {
-      title: "Bounce",
-      year: 2021,
-      measures: "30x50cm",      
-      materials: "Markers, color pencils on paper",
-      imageSrc: "/static/img/content/thumb/05.jpg"
-    },
-
-
-
-
-    {
-      title: "Shell",
-      year: 2022,
-      measures: "30х50",      
-      materials: "Markers, color pencils on paper",
-      imageSrc: "/static/img/content/thumb/10.jpg"
-    },
-    {
-      title: "Forgiveness",
-      year: 2022,
-      measures: "30х50",      
-      materials: "Markers, color pencils on paper",
-      imageSrc: "/static/img/content/thumb/09.jpg"
-    },
-    {
-      title: "Balance",
-      year: 2022,
-      measures: "30х50",      
-      materials: "Markers, color pencils on paper",
-      imageSrc: "/static/img/content/thumb/08.jpg"
-    },
-
-
-
-
-
-
-    ]
-  }
-
-];
-
-let galleryHTML = '';
-
-for (let group of data) {
-
-  galleryHTML += `
-    <h2 class="gallery__title">${group.group.title}</h2>
-    <p class="gallery__description">${group.group.description}</p>
-  `;
-
-  for (let item of group.items) {
-  
-    galleryHTML += `
-      <div class="gallery-item space-y-1 mb-12 reveal">
-        <img src="${item.imageSrc}" alt="${item.imageAlt}" title="Yulia Katan. ${item.title}"  loading="lazy" class="inset-0 mb-4 img-hover">
-        <h3 class="gallery-item gallery-item__title ml-10 mt-3 mb-1 mr-10 text-lg">${item.title}</h3>
-        <p class="gallery-item__text ml-2 mr-2 sm:ml-10 sm:mr-10 mt-1">
-          
-          <span  class="gallery-item__materials text-sm text-slate-700">${item.materials}</span><br>`;
-    if(item.measures!==undefined) galleryHTML += `<span  class="gallery-item__measures font-mono  text-xs text-slate-700" style="letter-spacing: .1rem">${item.measures}</span><br>`;
-    galleryHTML += `<span class="gallery-item__year  text-xs font-mono tracking-wider text-slate-400 hover:text-slate-700" style="letter-spacing: .1rem">${item.year}</span><br>
-        </p>
-      </div>
-    `;
-
-  }
-
-}
-
-const gallery = document.getElementById('gallery');
-
-gallery.innerHTML = galleryHTML;
-
-// Init scroll reveal for dynamically added items
-if (window.initReveal) window.initReveal();
-</script>
-
-
-
-
-
+    <!-- Free hang: real proportions, ragged baseline. Order follows the mockup -->
+    <div class="draw-wall">
+      <button type="button" class="draw-item draw-item--wide reveal" data-zoom
+        data-full="/static/img/drawings/molt.jpg"
+        data-title="Molt" data-measures="32×50 cm"
+        data-materials="Marker, colored pencil on paper" data-year="2026">
+        <img src="/static/img/drawings/molt.jpg" alt="Yulia Katan. Molt" title="Yulia Katan. Molt" class="img-hover" loading="eager">
+      </button>
+      <button type="button" class="draw-item reveal" data-zoom
+        data-full="/static/img/drawings/frederica.jpg"
+        data-title="Frederica" data-measures="20×20 cm"
+        data-materials="Marker, colored pencil on paper" data-year="2025">
+        <img src="/static/img/drawings/frederica.jpg" alt="Yulia Katan. Frederica" title="Yulia Katan. Frederica" class="img-hover" loading="lazy">
+      </button>
+      <button type="button" class="draw-item reveal" data-zoom
+        data-full="/static/img/drawings/invisible-friend.jpg"
+        data-title="Invisible Friend" data-measures="42×28 cm"
+        data-materials="Marker, colored pencil on paper" data-year="2025">
+        <img src="/static/img/drawings/invisible-friend.jpg" alt="Yulia Katan. Invisible Friend" title="Yulia Katan. Invisible Friend" class="img-hover" loading="lazy">
+      </button>
+      <button type="button" class="draw-item reveal" data-zoom
+        data-full="/static/img/drawings/courtyard.jpg"
+        data-title="Courtyard" data-measures="20×20 cm"
+        data-materials="Marker, colored pencil on paper" data-year="2025">
+        <img src="/static/img/drawings/courtyard.jpg" alt="Yulia Katan. Courtyard" title="Yulia Katan. Courtyard" class="img-hover" loading="lazy">
+      </button>
+      <button type="button" class="draw-item reveal" data-zoom
+        data-full="/static/img/drawings/gift.jpg"
+        data-title="Gift" data-measures="20×20 cm"
+        data-materials="Marker, colored pencil on paper" data-year="2025">
+        <img src="/static/img/drawings/gift.jpg" alt="Yulia Katan. Gift" title="Yulia Katan. Gift" class="img-hover" loading="lazy">
+      </button>
+      <button type="button" class="draw-item draw-item--raise reveal" data-zoom
+        data-full="/static/img/drawings/upward-lament.jpg"
+        data-title="Upward Lament" data-measures="42×28 cm"
+        data-materials="Marker, colored pencil on paper" data-year="2024">
+        <img src="/static/img/drawings/upward-lament.jpg" alt="Yulia Katan. Upward Lament" title="Yulia Katan. Upward Lament" class="img-hover" loading="lazy">
+      </button>
+      <button type="button" class="draw-item draw-item--small reveal" data-zoom
+        data-full="/static/img/drawings/clear-night.jpg"
+        data-title="Clear Night" data-measures="15×10 cm"
+        data-materials="Marker, colored pencil on paper" data-year="2025">
+        <img src="/static/img/drawings/clear-night.jpg" alt="Yulia Katan. Clear Night" title="Yulia Katan. Clear Night" class="img-hover" loading="lazy">
+      </button>
+    </div>
+  </div>
 </div>
+
+<style>
+  .draw-wall {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 48px 36px;
+    align-items: start;       /* tops align, bottoms stay ragged — a free hang */
+  }
+  .draw-item {
+    display: block;
+    padding: 0; border: 0; background: none;
+    cursor: zoom-in;
+  }
+  .draw-item img { display: block; width: 100%; height: auto; }
+
+  @media (min-width: 640px) {
+    .draw-wall { grid-template-columns: repeat(2, 1fr); column-gap: 56px; row-gap: 64px; }
+    .draw-item--wide { grid-column: span 2; }   /* Molt — wide feature */
+    /* Clear Night — smaller, pushed to the right edge and dropped to the
+       bottom line of its row (level with Upward Lament) */
+    .draw-item--small { align-self: end; }
+    .draw-item--small img { width: 64%; margin-left: auto; }
+  }
+  @media (min-width: 1024px) {
+    .draw-wall { grid-template-columns: repeat(4, 1fr); column-gap: 56px; row-gap: 88px; }
+    /* lift via margin (transform is used by the reveal animation) */
+    .draw-item--raise { margin-top: -44px; }
+  }
+</style>

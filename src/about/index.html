@@ -1,33 +1,62 @@
 ---
 layout: default
 title: About
+fullwidth: true
 ---
 
-<div class="container  flex flex-col justify-center items-center">
-  <h1>
-    <strong class="">
-      {{title}}
-    </strong>
-  </h1>
+<div class="flex-1 flex flex-col lg:grid lg:grid-cols-12 lg:gap-x-[23px] lg:px-9 lg:content-start lg:mt-[108px]">
+  <!-- Photo — left (cols 3–7) -->
+  <figure class="about-photo reveal px-6 lg:px-0 lg:col-start-3 lg:col-span-5 lg:row-start-1">
+    <img src="/static/img/content/yulia-katan-2025.jpg" alt="Yulia Katan" title="Yulia Katan" loading="eager">
+  </figure>
 
-<div class="w-full max-w-2xl grid grid-cols-1 lg:grid-cols-2 gap-4 my-8 px-4 lg:mx-0">
-
-
-
-
-  <p>Yulia Katan is a Berlin-based artist from Odessa, Ukraine. She creates drawings, paintings, objects inspired by European medieval culture, nature and dream symbolism. She primarely focuses on figurative drawing and surreal imagery.
-    <img  class="mt-9 mb-9" style="display:block" src="/static/img/content/yulia-katan.jpg" alt="Yulia Katan" title="Yulia Katan by Gleb Kalinin">
-    </p>
-
-  <blockquote class="ml-4 mr-4 sm:ml-10 sm:mr-7 mt-9 font-serif italic text-lg sm:text-xl lg:text-2xl" style="line-height: 1.8;"><p style="text-indent: -.7rem;">„I explore the world around and myself through feelings, transforming them into symbols. I arrange my reality with my artwork. It is a way of communicating with people. There are subtleties of perception, vague sensations, events of inner life that cannot be put into words. The language of symbols is mostly universal.“</p></blockquote>
-
-
-
-
+  <!-- Bio — right (cols 9–11) -->
+  <aside class="about-bio px-6 lg:px-0 lg:col-start-9 lg:col-span-3 lg:row-start-1">
+    <div class="about-bio__inner">
+      <h1 class="about-bio__title">{{title}}</h1>
+      <div class="about-bio__text">
+        <p>Yulia Katan (b. 1997, Odesa, Ukraine) is a Berlin-based artist working with drawing, painting, and sculpture. Her practice explores how domestic spaces imprint on memory and matter. Katan studied Fine Arts and Design at Grekov Art College in Odesa, graduating in 2018.</p>
+        <p>Since relocating to Berlin, she has participated in various group exhibitions, including Heartbeat at Wolf &amp; Galentz Gallery and Inside/Outside at BAS CS Gallery, and works as a scenic painter. She is a recipient of funding from the Stiftung Kunstfonds in Bonn. Her current work focuses on visual memory, the sensory charge of everyday environments, and the transformation of recollection into material form.</p>
+      </div>
+    </div>
+  </aside>
 </div>
-<div class="w-full max-w-2xl grid grid-cols-1 lg:grid-cols-1 mb-10">
 
-<p style="text-align: center;"> <a href="https://t.me/addstickers/YuliaKatan" target="_blank"><img  class="mt-9 mb-9" style="display:block; max-width: 200px; height: auto; margin: 1.5rem auto" src="/static/img/content/stickers.png" alt="Yulia Katan" title="Yulia Katan Telegram stickers"><br><small>Telegram stickers</small></a></p>
+<!-- Artist statement — full content width (cols 3–11) -->
+<div class="lg:grid lg:grid-cols-12 lg:gap-x-[23px] lg:px-9">
+  <section class="about-statement px-6 lg:px-0 lg:col-start-3 lg:col-span-9">
+    <h2 class="about-statement__title">Statement</h2>
+    <div class="about-statement__text">
+      <p>Yulia Katan's work exists in symbiosis with the environments she lives in. Domestic corners, a porcelain pattern, a ficus leaf — such fragments anchor her practice. She returns to them until they compress into exact images, then translates them through drawing, painting, and sculpture.</p>
+      <p>In sculpture Katan works from recollection, but the act of remembering is never passive — it is already a form of looking. She returns to a corner, a surface, a leaf because attention turns the ordinary into something worth holding, testing, and reworking. She shapes keramiplast until a remembered form locks — square, elongated, leaf-sharp — then finishes it with colored pencil. That drawn layer acts as a second membrane, carrying light, pattern, and touch. The reliefs fix vanished interiors as tactile, irregular shards, like teeth pulled from the body.</p>
+      <p>In drawing and painting she stays closer to the present — not to depict it, but to trace how it is remembered as it is lived. The way an environment is held in the mind reshapes how it is seen. She treats homes and landscapes as vascular systems where attention moves like blood; veins traverse sockets, tables, and windows. Sometimes objects stay literal — ceramic dog, patterned fabric, porcelain plate — held as mnemonic scraps.</p>
+      <p>Across media, visual memory is material. Katan makes visible how domestic space imprints on the body, and returns that imprint to matter. Her work shows how spaces inhabit us as much as we inhabit them.</p>
+    </div>
+  </section>
+</div>
 
-</div>
-</div>
+<style>
+  .about-photo { margin: 1rem 0 3rem; }
+  .about-photo img { width: 100%; height: auto; display: block; }
+
+  /* Match the project-page titles (.section-gallery h1 strong → 60% of 2.03rem) */
+  .about-bio__title { font-size: 1.218rem; font-weight: 300; line-height: 1.2; margin: 0 0 1.1rem; text-align: left; }
+  .about-bio__text { font-size: 0.95rem; line-height: 1.65; color: #334155; max-width: 34ch; }
+  .about-bio__text p { margin: 0; }
+  .about-bio__text p + p { margin-top: 1rem; }
+
+  /* Statement — spans the full 9 columns below the photo + bio */
+  .about-statement { margin-top: 4rem; }
+  .about-statement__title { font-size: 1.218rem; font-weight: 300; line-height: 1.2; margin: 0 0 1.2rem; }
+  .about-statement__text { font-size: 0.95rem; line-height: 1.7; color: #334155; }
+  .about-statement__text p { margin: 0; }
+  .about-statement__text p + p { margin-top: 1rem; }
+
+  @media (min-width: 1024px) {
+    .about-photo { margin: 0; }
+  }
+  @media (max-width: 1023px) {
+    .about-photo { margin-bottom: 2rem; }
+    .about-statement { margin-top: 2.5rem; }
+  }
+</style>

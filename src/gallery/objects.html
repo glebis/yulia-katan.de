@@ -2,9 +2,11 @@
 layout: default
 title: Extracted Bones
 path: gallery
+fullwidth: true
 ---
 
-<div class="container mx-auto w-full max-w-2xl grid grid-cols-1 lg:grid-cols-1 gap-4 flex flex-col justify-center items-center px-4">
+<div class="flex-1 flex flex-col lg:grid lg:grid-cols-12 lg:gap-x-[23px] lg:px-9 lg:content-start">
+  <div class="px-6 lg:px-0 lg:col-start-3 lg:col-span-9">
   <h1 class="mt-7  mb-10">
     <strong class="">
       {{title}}
@@ -69,7 +71,14 @@ for (let item of data) {
 
   for (let img of item.images) {
     galleryHTML += `
-      <img src="${img}" alt="Yulia Katan. ${item.title}" title="Yulia Katan. ${item.title}" loading="lazy" class="inset-0 mb-4 img-hover">`;
+      <button type="button" class="zoom-trigger" data-zoom
+        data-full="${img}"
+        data-title="${item.title || ''}"
+        data-materials="${item.materials || ''}"
+        data-measures="${item.measures || ''}"
+        data-year="${item.year || ''}">
+        <img src="${img}" alt="Yulia Katan. ${item.title}" title="Yulia Katan. ${item.title}" loading="lazy" class="inset-0 mb-4 img-hover">
+      </button>`;
   }
 
   galleryHTML += `
@@ -89,6 +98,7 @@ gallery.innerHTML = galleryHTML;
 
 if (window.initReveal) window.initReveal();
 </script>
+  </div>
 
 
 </div>

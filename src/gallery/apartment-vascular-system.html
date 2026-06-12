@@ -2,56 +2,86 @@
 layout: default
 title: Apartment Vascular System
 path: gallery
+fullwidth: true
 ---
 
-<div class="container mx-auto w-full max-w-2xl grid grid-cols-1 lg:grid-cols-1 gap-4 flex flex-col justify-center items-center px-4">
-  <h1 class="mt-7  mb-10">
-    <strong class="">
-      {{title}}
-    </strong>
-  </h1>
+<div class="flex-1 flex flex-col lg:grid lg:grid-cols-12 lg:gap-x-[23px] lg:px-9 lg:content-start">
+  <!-- Exhibition view — 9 columns (cols 3–11), full width, not zoomable -->
+  <figure class="vs-hero reveal px-6 lg:px-0 lg:col-start-3 lg:col-span-9">
+    <img src="/static/img/vascular-system/exposition.jpg"
+         alt="Yulia Katan. Vascular System — exhibition view"
+         title="Yulia Katan. Vascular System — exhibition view"
+         loading="eager">
+  </figure>
 
-  <p class="text-slate-400 text-center max-w-prose">
-    Project page — content coming soon.
-  </p>
+  <!-- Title + description — right column (cols 9–11), sticky -->
+  <aside class="vs-info px-6 lg:px-0 lg:col-start-9 lg:col-span-3 lg:row-start-2">
+    <div class="vs-info__inner">
+      <h1 class="vs-info__title"><strong>{{title}}</strong></h1>
+      <div class="vs-info__desc">
+        <p>The series traces the interior life of domestic space. In each work, red vascular forms move through rooms — connecting plants, furniture, and architectural remnants as though the apartment itself has a circulatory system.</p>
+        <p>Objects here are not passive: they hold time, carry memory of lives that preceded the current inhabitant, and remain linked to a world before the self. The series proposes the home as a living body, and dwelling as a form of mutual absorption.</p>
+      </div>
+    </div>
+  </aside>
 
-  <div id="gallery"></div>
-
-  <script type="text/javascript">
-    // Add works here, then they render into #gallery (same pattern as the other project pages).
-    const data = [
-      {
-        "group": { "title": "", "description": "" },
-        "items": [
-          // {
-          //   title: "",
-          //   year: 2026,
-          //   measures: "",
-          //   materials: "",
-          //   imageSrc: "/static/img/content/thumb/.jpg"
-          // },
-        ]
-      }
-    ];
-
-    let galleryHTML = '';
-    for (let group of data) {
-      for (let item of group.items) {
-        galleryHTML += `
-          <div class="gallery-item space-y-1 mb-12 reveal">
-            <img src="${item.imageSrc}" alt="" title="Yulia Katan. ${item.title}" loading="lazy" class="inset-0 mb-4 img-hover">
-            <h3 class="gallery-item gallery-item__title ml-10 mt-3 mb-1 mr-10 text-lg">${item.title}</h3>
-            <p class="gallery-item__text ml-2 mr-2 sm:ml-10 sm:mr-10 mt-1">
-              <span class="gallery-item__materials text-sm text-slate-700">${item.materials}</span><br>`;
-        if (item.measures !== undefined) galleryHTML += `<span class="gallery-item__measures font-mono text-xs text-slate-700" style="letter-spacing: .1rem">${item.measures}</span><br>`;
-        galleryHTML += `<span class="gallery-item__year text-xs font-mono tracking-wider text-slate-400 hover:text-slate-700" style="letter-spacing: .1rem">${item.year}</span><br>
-            </p>
-          </div>`;
-      }
-    }
-
-    const gallery = document.getElementById('gallery');
-    gallery.innerHTML = galleryHTML;
-    if (window.initReveal) window.initReveal();
-  </script>
+  <!-- Works, one per row — left column (cols 3–7). Click to enlarge. -->
+  <div class="vs-works px-6 lg:px-0 lg:col-start-3 lg:col-span-5 lg:row-start-2">
+    <button type="button" class="zoom-trigger reveal" data-zoom
+      data-full="/static/img/vascular-system/01.jpg"
+      data-title="Birch and Dagger"
+      data-measures="50×50 cm"
+      data-materials="Colored pencil on paper, mounted on wood"
+      data-year="2024">
+      <img src="/static/img/vascular-system/01.jpg" alt="Yulia Katan. Birch and Dagger" title="Yulia Katan. Birch and Dagger" class="img-hover" loading="lazy">
+    </button>
+    <button type="button" class="zoom-trigger reveal" data-zoom
+      data-full="/static/img/vascular-system/02.jpg"
+      data-title="Heart above the Bed"
+      data-measures="50×50 cm"
+      data-materials="Colored pencil on paper, mounted on wood"
+      data-year="2025">
+      <img src="/static/img/vascular-system/02.jpg" alt="Yulia Katan. Heart above the Bed" title="Yulia Katan. Heart above the Bed" class="img-hover" loading="lazy">
+    </button>
+    <button type="button" class="zoom-trigger reveal" data-zoom
+      data-full="/static/img/vascular-system/03.jpg"
+      data-title="Patterns"
+      data-measures="50×50 cm"
+      data-materials="Colored pencil on paper, mounted on wood"
+      data-year="2024">
+      <img src="/static/img/vascular-system/03.jpg" alt="Yulia Katan. Patterns" title="Yulia Katan. Patterns" class="img-hover" loading="lazy">
+    </button>
+    <button type="button" class="zoom-trigger reveal" data-zoom
+      data-full="/static/img/vascular-system/04.jpg"
+      data-title="Window view"
+      data-measures="50×50 cm"
+      data-materials="Colored pencil on paper, mounted on wood"
+      data-year="2024">
+      <img src="/static/img/vascular-system/04.jpg" alt="Yulia Katan. Window view" title="Yulia Katan. Window view" class="img-hover" loading="lazy">
+    </button>
+  </div>
 </div>
+
+<style>
+  .vs-hero { margin: 1rem 0 3rem; }
+  /* Match the home page: image top sits 108px down on large screens */
+  @media (min-width: 1024px) { .vs-hero { margin-top: 108px; } }
+  .vs-hero img { width: 100%; height: auto; display: block; }
+
+  .vs-works { display: flex; flex-direction: column; gap: 4.5rem; }
+
+  .vs-info__title { font-size: 2.03rem; line-height: 1.2; margin: 0 0 1.1rem; padding: 0; text-align: left; text-indent: 0; }
+  .vs-info__desc { font-size: 0.95rem; line-height: 1.65; color: #334155; max-width: 34ch; }
+  .vs-info__desc p { margin: 0; }
+  .vs-info__desc p + p { margin-top: 1rem; }
+  @media (min-width: 1024px) {
+    /* Text block follows the scroll while the works pass on the left */
+    .vs-info__inner { position: sticky; top: 108px; }
+  }
+
+  @media (max-width: 1023px) {
+    .vs-hero { margin-bottom: 2rem; }
+    .vs-info { margin-bottom: 2.5rem; }
+    .vs-works { gap: 2.5rem; }
+  }
+</style>

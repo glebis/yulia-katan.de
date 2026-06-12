@@ -1,12 +1,13 @@
-<footer class="text-center w-full py-4 px-4 {{ 'lg:text-left lg:pl-[268px] lg:pr-9' if path == 'home' }}">
-    <small class="text-gray-500">©
+<!-- Footer: text aligned to the left edge of column 3 on every page.
+     Uses the same full-width 12-col grid as page content. On pages with the
+     lg:pl-60 sidebar offset, that offset is cancelled so the grid stays full-width. -->
+<footer class="w-full py-4 px-6 text-center lg:text-left lg:grid lg:grid-cols-12 lg:gap-x-[23px] lg:px-9 {{ 'lg:-ml-60 lg:w-[calc(100%+15rem)]' if path != 'home' and not fullwidth }}">
+    <small class="text-gray-500 lg:col-start-3 lg:col-span-9">©
         {{settings.name}}
-        2026. 
+        2026.
         <a class="underline" href="/impressum">Impressum</a> •
         <a class="underline" href="https://instagram.com/katan.ju/">Instagram</a> •
         <a class="underline" href="https://www.etsy.com/shop/YuliaKatanArtwork?ref=dashboard-header">Shop</a> •
         <a class="underline" href="/contact/">Contact</a>
-
-        
     </small>
 </footer>

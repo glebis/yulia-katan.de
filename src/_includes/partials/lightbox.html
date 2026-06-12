@@ -1,0 +1,262 @@
+<!-- Shared lightbox: any element with [data-zoom] opens its data-full image
+     in a white frame with technical details. Triggers may be added dynamically
+     (gallery pages render via JS) — binding is delegated on document. -->
+<div id="lightbox" class="lightbox" aria-hidden="true">
+  <button type="button" class="lightbox__nav lightbox__nav--prev" aria-label="Previous work">‹</button>
+  <button type="button" class="lightbox__nav lightbox__nav--next" aria-label="Next work">›</button>
+  <figure class="lightbox__frame">
+    <div class="lightbox__stage">
+      <img src="" alt="">
+    </div>
+    <figcaption class="lightbox__caption">
+      <span class="lightbox__title"></span>
+      <span class="lightbox__materials"></span>
+      <span class="lightbox__measures"></span>
+      <span class="lightbox__year"></span>
+    </figcaption>
+  </figure>
+</div>
+
+<style>
+  /* Clickable image trigger — resets default button chrome */
+  .zoom-trigger {
+    display: block;
+    width: 100%;
+    padding: 0;
+    border: 0;
+    background: none;
+    cursor: zoom-in;
+  }
+  .zoom-trigger img { display: block; width: 100%; height: auto; }
+
+  /* Overlay */
+  .lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 2.2vmin;
+    background: rgba(120, 113, 108, 0.45);
+    cursor: zoom-out;
+  }
+  .lightbox.is-open { display: flex; }
+
+  /* Prev / next navigation */
+  .lightbox__nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+    border: 0;
+    background: none;
+    cursor: pointer;
+    font-size: clamp(2rem, 4vw, 3rem);
+    line-height: 1;
+    color: rgba(30, 27, 25, 0.5);
+    padding: 0.3em 0.5em;
+    transition: color 0.2s ease;
+    user-select: none;
+  }
+  .lightbox__nav:hover { color: rgba(30, 27, 25, 0.9); }
+  .lightbox__nav--prev { left: 0.5vw; }
+  .lightbox__nav--next { right: 0.5vw; }
+  @media (max-width: 560px) {
+    .lightbox__nav { font-size: 2rem; padding: 0.2em 0.3em; }
+  }
+
+  /* White frame (passe-partout) around the work */
+  .lightbox__frame {
+    margin: 0;
+    max-height: 95vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;       /* image centered; caption width is matched to it via JS */
+    background: #fff;
+    padding: clamp(14px, 1.8vw, 26px);
+    box-shadow: 0 18px 60px rgba(0, 0, 0, 0.18);
+    cursor: default;
+  }
+  /* Stage clips the image so it can be magnified in place */
+  .lightbox__stage {
+    overflow: hidden;
+    line-height: 0;
+    cursor: zoom-in;
+    flex-shrink: 0;            /* never shrink below the image — would clip it */
+  }
+  .lightbox__stage.is-zoomed { cursor: zoom-out; }
+  .lightbox__stage img {
+    min-height: 0;
+    max-width: 90vw;
+    /* Safe fallback so the work never overflows the viewport even if JS doesn't
+       run; JS refines this to the exact space left after the caption. */
+    max-height: calc(95vh - 12rem);
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    display: block;
+    margin: 0;
+    transition: transform 0.25s ease;
+    -webkit-user-drag: none;
+    user-select: none;
+  }
+  .lightbox__stage.is-zoomed img {
+    transform: scale(2.4);
+    transition: transform 0.18s ease;
+  }
+  .lightbox__caption {
+    margin-top: clamp(14px, 1.6vw, 22px);
+    text-align: left;
+    line-height: 1.5;
+  }
+  .lightbox__caption span { display: block; }
+  .lightbox__caption span:empty { display: none; }
+  .lightbox__title { font-size: 1.05rem; margin-bottom: 0.35rem; }
+  .lightbox__materials { font-size: 0.8rem; color: #334155; }
+  .lightbox__measures {
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 0.72rem; letter-spacing: 0.1rem; color: #334155;
+  }
+  .lightbox__year {
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 0.72rem; letter-spacing: 0.1rem; color: #94a3b8;
+  }
+
+  @media (max-width: 1023px) {
+    .lightbox__stage img { max-width: 92vw; }
+  }
+</style>
+
+<script>
+  (function () {
+    var box = document.getElementById('lightbox');
+    if (!box) return;
+    var stage = box.querySelector('.lightbox__stage');
+    var boxImg = box.querySelector('.lightbox__stage > img');
+    var elTitle = box.querySelector('.lightbox__title');
+    var elMaterials = box.querySelector('.lightbox__materials');
+    var elMeasures = box.querySelector('.lightbox__measures');
+    var elYear = box.querySelector('.lightbox__year');
+    var elCaption = box.querySelector('.lightbox__caption');
+    var frameEl = box.querySelector('.lightbox__frame');
+
+    // Match the caption width to the rendered image so its (left-aligned) text
+    // starts at the image's left edge while the image stays centered.
+    function syncCaptionWidth() {
+      if (!box.classList.contains('is-open') || !boxImg.clientWidth) return;
+      elCaption.style.width = boxImg.clientWidth + 'px';
+    }
+
+    // Give the image all the height left inside the 95vh frame after the
+    // caption — so each work is shown as large as possible without clipping.
+    function fitImage() {
+      var fcs = getComputedStyle(frameEl);
+      var frameMaxH = window.innerHeight * 0.95;
+      var padV = parseFloat(fcs.paddingTop) + parseFloat(fcs.paddingBottom);
+      var ccs = getComputedStyle(elCaption);
+      var capH = elCaption.offsetHeight + parseFloat(ccs.marginTop);
+      var avail = Math.max(160, frameMaxH - padV - capH - 6);
+      boxImg.style.maxHeight = avail + 'px';
+    }
+
+    // Caption width depends on the image width, the image height depends on the
+    // caption height — settle both with a few passes.
+    function relayout() {
+      if (!box.classList.contains('is-open') || !boxImg.clientWidth) return;
+      for (var i = 0; i < 3; i++) { syncCaptionWidth(); fitImage(); }
+    }
+
+    // Click-to-zoom: magnify in place, mouse moves pan to the area of interest.
+    function resetZoom() {
+      stage.classList.remove('is-zoomed');
+      boxImg.style.transformOrigin = '';
+    }
+    function panTo(e) {
+      var r = stage.getBoundingClientRect();
+      var x = Math.max(0, Math.min(100, ((e.clientX - r.left) / r.width) * 100));
+      var y = Math.max(0, Math.min(100, ((e.clientY - r.top) / r.height) * 100));
+      boxImg.style.transformOrigin = x + '% ' + y + '%';
+    }
+    stage.addEventListener('click', function (e) {
+      e.stopPropagation();
+      if (stage.classList.contains('is-zoomed')) { resetZoom(); }
+      else { panTo(e); stage.classList.add('is-zoomed'); }
+    });
+    stage.addEventListener('mousemove', function (e) {
+      if (stage.classList.contains('is-zoomed')) panTo(e);
+    });
+
+    var navPrev = box.querySelector('.lightbox__nav--prev');
+    var navNext = box.querySelector('.lightbox__nav--next');
+    var triggers = [];
+    var index = -1;
+
+    // Fill the lightbox from a trigger element (without changing the list/index)
+    function render(el) {
+      var img = el.querySelector('img');
+      boxImg.onload = null;
+      resetZoom();
+      boxImg.src = el.getAttribute('data-full') || (img ? img.src : '');
+      boxImg.alt = img ? img.alt : '';
+      elTitle.textContent = el.getAttribute('data-title') || '';
+      elMaterials.textContent = el.getAttribute('data-materials') || '';
+      elMeasures.textContent = el.getAttribute('data-measures') || '';
+      elYear.textContent = el.getAttribute('data-year') || '';
+      elCaption.style.width = '';
+      boxImg.style.maxHeight = '';
+      if (boxImg.complete && boxImg.naturalWidth) relayout();
+      else boxImg.onload = relayout;
+    }
+
+    function updateNav() {
+      var multi = triggers.length > 1 ? '' : 'none';
+      navPrev.style.display = multi;
+      navNext.style.display = multi;
+    }
+
+    function open(el) {
+      // Build the list of works from the current page, remember where we are
+      triggers = Array.prototype.slice.call(document.querySelectorAll('[data-zoom]'));
+      index = triggers.indexOf(el);
+      // Mark open BEFORE render so the height-fitting (which bails when closed) runs
+      box.classList.add('is-open');
+      box.setAttribute('aria-hidden', 'false');
+      render(el);
+      updateNav();
+    }
+
+    // Step forward / back through the works (wraps around)
+    function go(delta) {
+      if (triggers.length < 2 || index < 0) return;
+      index = (index + delta + triggers.length) % triggers.length;
+      render(triggers[index]);
+    }
+
+    function close() {
+      box.classList.remove('is-open');
+      box.setAttribute('aria-hidden', 'true');
+      boxImg.src = '';
+      elCaption.style.width = '';
+      resetZoom();
+    }
+
+    navPrev.addEventListener('click', function (e) { e.stopPropagation(); go(-1); });
+    navNext.addEventListener('click', function (e) { e.stopPropagation(); go(1); });
+
+    window.addEventListener('resize', relayout);
+
+    // Delegated: works for JS-rendered gallery items too
+    document.addEventListener('click', function (e) {
+      var trigger = e.target.closest('[data-zoom]');
+      if (trigger) { open(trigger); return; }
+      if (e.target === box) close();
+    });
+    document.addEventListener('keydown', function (e) {
+      if (!box.classList.contains('is-open')) return;
+      if (e.key === 'Escape') close();
+      else if (e.key === 'ArrowLeft') go(-1);
+      else if (e.key === 'ArrowRight') go(1);
+    });
+  })();
+</script>
