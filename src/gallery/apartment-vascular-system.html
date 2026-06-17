@@ -77,8 +77,17 @@ fullwidth: true
   .vs-info__desc p + p { margin-top: 1rem; }
   .vs-info__meta { font-size: 0.8rem; color: #64748b; margin-top: 1.5rem; }
   @media (min-width: 1024px) {
-    /* Text block follows the scroll while the works pass on the left */
-    .vs-info__inner { position: sticky; top: 108px; }
+    /* Sticky text, vertically centred in the viewport while the works scroll past.
+       The full-height sticky box only pins to centre once the exhibition view has
+       scrolled away, so the text never overlaps it. */
+    .vs-info__inner {
+      position: sticky;
+      top: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
   }
 
   @media (max-width: 1023px) {

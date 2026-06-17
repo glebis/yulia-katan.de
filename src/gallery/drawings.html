@@ -103,6 +103,81 @@ fullwidth: true
         <span class="draw-cap" aria-hidden="true">Primordial Ooze<span class="draw-cap__year">2024</span></span>
       </button>
     </div>
+
+    <!-- Full-width triptych row: three 15×15 works across the content field -->
+    <div class="draw-row3">
+      <button type="button" class="draw-item reveal" data-zoom
+        data-full="/static/img/drawings/sublunar-dancers.jpg"
+        data-title="Sublunar Dancers" data-measures="15×15 cm"
+        data-materials="Marker, colored pencil on paper" data-year="2023">
+        <img src="/static/img/drawings/sublunar-dancers.jpg" alt="Yulia Katan. Sublunar Dancers" title="Yulia Katan. Sublunar Dancers" class="img-hover" loading="lazy">
+        <span class="draw-cap" aria-hidden="true">Sublunar Dancers<span class="draw-cap__year">2023</span></span>
+      </button>
+      <button type="button" class="draw-item reveal" data-zoom
+        data-full="/static/img/drawings/connection.jpg"
+        data-title="Connection" data-measures="15×15 cm"
+        data-materials="Marker, colored pencil on paper" data-year="2023">
+        <img src="/static/img/drawings/connection.jpg" alt="Yulia Katan. Connection" title="Yulia Katan. Connection" class="img-hover" loading="lazy">
+        <span class="draw-cap" aria-hidden="true">Connection<span class="draw-cap__year">2023</span></span>
+      </button>
+      <button type="button" class="draw-item reveal" data-zoom
+        data-full="/static/img/drawings/observers.jpg"
+        data-title="Observers" data-measures="15×15 cm"
+        data-materials="Marker, colored pencil on paper" data-year="2023">
+        <img src="/static/img/drawings/observers.jpg" alt="Yulia Katan. Observers" title="Yulia Katan. Observers" class="img-hover" loading="lazy">
+        <span class="draw-cap" aria-hidden="true">Observers<span class="draw-cap__year">2023</span></span>
+      </button>
+    </div>
+
+    <!-- Second full-width triptych row -->
+    <div class="draw-row3">
+      <button type="button" class="draw-item reveal" data-zoom
+        data-full="/static/img/drawings/intercourse.jpg"
+        data-title="Intercourse" data-measures="15×15 cm"
+        data-materials="Marker, colored pencil on paper" data-year="2023">
+        <img src="/static/img/drawings/intercourse.jpg" alt="Yulia Katan. Intercourse" title="Yulia Katan. Intercourse" class="img-hover" loading="lazy">
+        <span class="draw-cap" aria-hidden="true">Intercourse<span class="draw-cap__year">2023</span></span>
+      </button>
+      <button type="button" class="draw-item reveal" data-zoom
+        data-full="/static/img/drawings/feeding.jpg"
+        data-title="Feeding" data-measures="15×15 cm"
+        data-materials="Marker, colored pencil on paper" data-year="2023">
+        <img src="/static/img/drawings/feeding.jpg" alt="Yulia Katan. Feeding" title="Yulia Katan. Feeding" class="img-hover" loading="lazy">
+        <span class="draw-cap" aria-hidden="true">Feeding<span class="draw-cap__year">2023</span></span>
+      </button>
+      <button type="button" class="draw-item reveal" data-zoom
+        data-full="/static/img/drawings/harvest.jpg"
+        data-title="Harvest" data-measures="15×15 cm"
+        data-materials="Marker, colored pencil on paper" data-year="2023">
+        <img src="/static/img/drawings/harvest.jpg" alt="Yulia Katan. Harvest" title="Yulia Katan. Harvest" class="img-hover" loading="lazy">
+        <span class="draw-cap" aria-hidden="true">Harvest<span class="draw-cap__year">2023</span></span>
+      </button>
+    </div>
+
+    <!-- Third full-width triptych row -->
+    <div class="draw-row3">
+      <button type="button" class="draw-item reveal" data-zoom
+        data-full="/static/img/drawings/shadows-walk.jpg"
+        data-title="Shadow's Walk" data-measures="15×15 cm"
+        data-materials="Marker, colored pencil on paper" data-year="2023">
+        <img src="/static/img/drawings/shadows-walk.jpg" alt="Yulia Katan. Shadow's Walk" title="Yulia Katan. Shadow's Walk" class="img-hover" loading="lazy">
+        <span class="draw-cap" aria-hidden="true">Shadow's Walk<span class="draw-cap__year">2023</span></span>
+      </button>
+      <button type="button" class="draw-item reveal" data-zoom
+        data-full="/static/img/drawings/divine-work.jpg"
+        data-title="Divine Work" data-measures="15×15 cm"
+        data-materials="Marker, colored pencil on paper" data-year="2023">
+        <img src="/static/img/drawings/divine-work.jpg" alt="Yulia Katan. Divine Work" title="Yulia Katan. Divine Work" class="img-hover" loading="lazy">
+        <span class="draw-cap" aria-hidden="true">Divine Work<span class="draw-cap__year">2023</span></span>
+      </button>
+      <button type="button" class="draw-item reveal" data-zoom
+        data-full="/static/img/drawings/shadows-hand.jpg"
+        data-title="Shadow's Hand" data-measures="15×15 cm"
+        data-materials="Marker, colored pencil on paper" data-year="2023">
+        <img src="/static/img/drawings/shadows-hand.jpg" alt="Yulia Katan. Shadow's Hand" title="Yulia Katan. Shadow's Hand" class="img-hover" loading="lazy">
+        <span class="draw-cap" aria-hidden="true">Shadow's Hand<span class="draw-cap__year">2023</span></span>
+      </button>
+    </div>
   </div>
 </div>
 
@@ -113,6 +188,14 @@ fullwidth: true
     grid-template-columns: 1fr;
     gap: 48px 36px;
     align-items: start;       /* tops align, bottoms stay ragged — a free hang */
+  }
+  /* Full-width triptych row below the free hang: three equal squares.
+     Stacks on mobile; three across from sm up. */
+  .draw-row3 {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 48px 36px;
+    margin-top: 48px;
   }
   .draw-item {
     position: relative;
@@ -160,6 +243,14 @@ fullwidth: true
 
   @media (min-width: 640px) {
     .draw-wall { grid-template-columns: repeat(2, 1fr); column-gap: 56px; row-gap: 64px; }
+    .draw-row3 { grid-template-columns: repeat(3, 1fr); gap: 56px; margin-top: 64px; }
+    /* squares 20% smaller than the cell, but the outer two are pinned to the
+       content field's edges (start / end) and the middle is centered — the row
+       still spans the full width, the works just sit lighter with air between. */
+    .draw-row3 .draw-item { width: 80%; }
+    .draw-row3 .draw-item:first-child  { justify-self: start; }
+    .draw-row3 .draw-item:nth-child(2) { justify-self: center; }
+    .draw-row3 .draw-item:last-child   { justify-self: end; }
     .draw-item--wide { grid-column: span 2; }   /* Molt — wide feature */
     /* Clear Night — smaller, pushed to the right edge and dropped to the
        bottom line of its row (level with Upward Lament) */
@@ -192,6 +283,7 @@ fullwidth: true
   }
   @media (min-width: 1024px) {
     .draw-wall { grid-template-columns: repeat(4, 1fr); column-gap: 56px; row-gap: 88px; }
+    .draw-row3 { margin-top: 88px; }
     /* lift via margin (transform is used by the reveal animation) */
     .draw-item--raise { margin-top: -44px; }
     .draw-item--reduce { margin-top: -34px; }
@@ -215,13 +307,15 @@ fullwidth: true
       margin-top: 17px; left: 64px; }
     /* Primordial Ooze — large work filling the empty space opposite the
        A Face / Sharing a Bed stack. Absolutely placed over the wall so its
-       height never disturbs the stack's row rhythm: bottom:0 sits its bottom
-       edge on the wall's bottom edge (= Sharing a Bed's bottom), right:253px
-       (one column + gutter) pulls its right edge one column in from the wall
-       edge. width is the rendered size carried over from the grid placement.
-       Out of flow, the wall's bottom equals Sharing a Bed's bottom, so bottom:0
-       lands Ooze's bottom edge exactly on Sharing's. */
-    .draw-item--ooze { position: absolute; right: 51px; bottom: 0; width: 421px; }
+       height never disturbs the stack's row rhythm. Out of flow, the wall's
+       bottom equals Sharing a Bed's bottom, so bottom:0 lands Ooze's bottom on
+       Sharing's. right:5.33% keeps it one column-ish in from the right edge.
+       width must SCALE with the wall (the grid works grow with the viewport but
+       fixed px did not, so Ooze's top fell below A Face on wide screens): the
+       calc makes Ooze's height equal the A-Face-top→Sharing-bottom span — fitted
+       linearly from two viewports (957px→420.7, 1200px→538.6), verified to hold
+       top & bottom alignment at 1356 / 1680 / 1920. */
+    .draw-item--ooze { position: absolute; right: 5.33%; bottom: 0; width: calc(48.52% - 44px); }
     .draw-item--ooze img { width: 100%; max-width: none; }
   }
 </style>
