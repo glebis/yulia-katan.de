@@ -7,7 +7,7 @@ fullwidth: true
 
 <div class="flex-1 flex flex-col lg:grid lg:grid-cols-12 lg:gap-x-[23px] lg:px-9 lg:content-start">
   <div class="px-6 lg:px-0 lg:col-start-3 lg:col-span-9">
-    <h1 class="mt-7 mb-10"><strong>{{title}}</strong></h1>
+    <h1 class="mt-7 mb-16"><strong>{{title}}</strong></h1>
 
     <!-- Free hang: real proportions, ragged baseline. Order follows the mockup -->
     <div class="draw-wall">
@@ -289,8 +289,9 @@ fullwidth: true
   .draw-item img { display: block; width: 100%; height: auto; }
 
   /* Wall label — sits in the whitespace below each work so it never covers the
-     art or disturbs the ragged baseline. Same monospace voice as the lightbox.
-     Revealed on hover/focus; on touch the full caption lives in the lightbox. */
+     art or disturbs the ragged baseline. Uses the site's main font (inherited),
+     15% smaller than before. Revealed on hover/focus; on touch the full caption
+     lives in the lightbox. */
   .draw-cap {
     position: absolute;
     top: 100%; left: 0;
@@ -300,8 +301,8 @@ fullwidth: true
     flex-wrap: wrap;
     align-items: baseline;
     gap: 0.2rem 0.7rem;
-    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-    font-size: 0.7rem;
+    font-family: inherit;
+    font-size: 0.595rem;
     letter-spacing: 0.09rem;
     text-transform: uppercase;
     color: #1e1b19;
