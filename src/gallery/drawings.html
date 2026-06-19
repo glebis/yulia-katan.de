@@ -178,6 +178,70 @@ fullwidth: true
         <span class="draw-cap" aria-hidden="true">Shadow's Hand<span class="draw-cap__year">2023</span></span>
       </button>
     </div>
+
+    <!-- A Secret (left, large) paired with a vertical Hearing / Shedding stack (right) -->
+    <div class="draw-secret">
+      <button type="button" class="draw-item reveal" data-zoom
+        data-full="/static/img/drawings/a-secret.jpg"
+        data-title="A Secret" data-measures="65×50 cm"
+        data-materials="Marker, colored pencil on paper" data-year="2023">
+        <img src="/static/img/drawings/a-secret.jpg" alt="Yulia Katan. A Secret" title="Yulia Katan. A Secret" class="img-hover" loading="lazy">
+        <span class="draw-cap" aria-hidden="true">A Secret<span class="draw-cap__year">2023</span></span>
+      </button>
+      <div class="draw-secret__stack">
+        <button type="button" class="draw-item reveal" data-zoom
+          data-full="/static/img/drawings/perfectionism.jpg"
+          data-title="Perfectionism" data-measures="50×40 cm"
+          data-materials="Marker, colored pencil on paper" data-year="2022">
+          <img src="/static/img/drawings/perfectionism.jpg" alt="Yulia Katan. Perfectionism" title="Yulia Katan. Perfectionism" class="img-hover" loading="lazy">
+          <span class="draw-cap" aria-hidden="true">Perfectionism<span class="draw-cap__year">2022</span></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Full-width row of two equal-size landscape works -->
+    <div class="draw-row2">
+      <button type="button" class="draw-item reveal" data-zoom
+        data-full="/static/img/drawings/antagonism.jpg"
+        data-title="Antagonism" data-measures="80×60 cm"
+        data-materials="Marker, colored pencil on paper" data-year="2022">
+        <img src="/static/img/drawings/antagonism.jpg" alt="Yulia Katan. Antagonism" title="Yulia Katan. Antagonism" class="img-hover" loading="lazy">
+        <span class="draw-cap" aria-hidden="true">Antagonism<span class="draw-cap__year">2022</span></span>
+      </button>
+      <button type="button" class="draw-item reveal" data-zoom
+        data-full="/static/img/drawings/a-place-of-attraction.jpg"
+        data-title="A Place of Attraction" data-measures="80×60 cm"
+        data-materials="Marker, colored pencil on paper" data-year="2022">
+        <img src="/static/img/drawings/a-place-of-attraction.jpg" alt="Yulia Katan. A Place of Attraction" title="Yulia Katan. A Place of Attraction" class="img-hover" loading="lazy">
+        <span class="draw-cap" aria-hidden="true">A Place of Attraction<span class="draw-cap__year">2022</span></span>
+      </button>
+    </div>
+
+    <!-- Symmetric triptych (outer works identical), height matched to
+         Perfectionism, outer works pinned to the content-field edges -->
+    <div class="draw-trip">
+      <button type="button" class="draw-item reveal" data-zoom
+        data-full="/static/img/drawings/untitled-a.jpg"
+        data-title="Untitled" data-measures="50×30 cm"
+        data-materials="Marker, colored pencil on paper" data-year="2022">
+        <img src="/static/img/drawings/untitled-a.jpg" alt="Yulia Katan. Untitled" title="Yulia Katan. Untitled" class="img-hover" loading="lazy">
+        <span class="draw-cap" aria-hidden="true">Untitled<span class="draw-cap__year">2022</span></span>
+      </button>
+      <button type="button" class="draw-item reveal" data-zoom
+        data-full="/static/img/drawings/untitled-b.jpg"
+        data-title="Untitled" data-measures="50×30 cm"
+        data-materials="Marker, colored pencil on paper" data-year="2022">
+        <img src="/static/img/drawings/untitled-b.jpg" alt="Yulia Katan. Untitled" title="Yulia Katan. Untitled" class="img-hover" loading="lazy">
+        <span class="draw-cap" aria-hidden="true">Untitled<span class="draw-cap__year">2022</span></span>
+      </button>
+      <button type="button" class="draw-item reveal" data-zoom
+        data-full="/static/img/drawings/untitled-c.jpg"
+        data-title="Untitled" data-measures="50×30 cm"
+        data-materials="Marker, colored pencil on paper" data-year="2022">
+        <img src="/static/img/drawings/untitled-c.jpg" alt="Yulia Katan. Untitled" title="Yulia Katan. Untitled" class="img-hover" loading="lazy">
+        <span class="draw-cap" aria-hidden="true">Untitled<span class="draw-cap__year">2022</span></span>
+      </button>
+    </div>
   </div>
 </div>
 
@@ -197,6 +261,25 @@ fullwidth: true
     gap: 48px 36px;
     margin-top: 48px;
   }
+  /* Row of two equal-width landscape works. */
+  .draw-row2 {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 48px 36px;
+    margin-top: 48px;
+  }
+  /* Symmetric triptych, height matched to Perfectionism. Flex (not grid) so the
+     items' percentage widths resolve against the wall, not a 1fr cell. */
+  .draw-trip {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+    margin-top: 48px;
+  }
+  /* A Secret paired with a vertical Hearing / Shedding stack. On mobile the
+     stack drops below A Secret; on lg they sit side by side (see below). */
+  .draw-secret { margin-top: 48px; }
+  .draw-secret__stack { display: flex; flex-direction: column; gap: 48px; margin-top: 48px; }
   .draw-item {
     position: relative;
     display: block;
@@ -244,10 +327,11 @@ fullwidth: true
   @media (min-width: 640px) {
     .draw-wall { grid-template-columns: repeat(2, 1fr); column-gap: 56px; row-gap: 64px; }
     .draw-row3 { grid-template-columns: repeat(3, 1fr); gap: 56px; margin-top: 64px; }
+    .draw-row2 { grid-template-columns: 1fr 1fr; gap: 56px; margin-top: 64px; }
     /* squares 20% smaller than the cell, but the outer two are pinned to the
        content field's edges (start / end) and the middle is centered — the row
        still spans the full width, the works just sit lighter with air between. */
-    .draw-row3 .draw-item { width: 80%; }
+    .draw-row3 .draw-item { width: 72%; }
     .draw-row3 .draw-item:first-child  { justify-self: start; }
     .draw-row3 .draw-item:nth-child(2) { justify-self: center; }
     .draw-row3 .draw-item:last-child   { justify-self: end; }
@@ -284,6 +368,24 @@ fullwidth: true
   @media (min-width: 1024px) {
     .draw-wall { grid-template-columns: repeat(4, 1fr); column-gap: 56px; row-gap: 88px; }
     .draw-row3 { margin-top: 88px; }
+    .draw-row2 { margin-top: 88px; }
+    /* Triptych: all three the height of Perfectionism (width = height × aspect,
+       with H_perfectionism = 0.51475·wall − 57.2px, % of wall). The outer works
+       are the same image (aspect 0.589); the middle is aspect 0.606.
+       space-between pins the outer works to the field edges and centres the
+       middle. */
+    .draw-trip { flex-direction: row; justify-content: space-between; align-items: flex-start; margin-top: 88px; }
+    .draw-trip .draw-item:first-child { width: calc(30.33% - 33.7px); }  /* untitled-a, 0.589 */
+    .draw-trip .draw-item:nth-child(2) { width: calc(31.17% - 34.6px); } /* untitled-b, 0.606 */
+    .draw-trip .draw-item:last-child { width: calc(30.93% - 34.4px); }   /* untitled-c, 0.601 */
+    /* A Secret (left) matches Primordial Ooze's rendered HEIGHT (it is a
+       narrower, taller work, so its width = 0.898 × Ooze's width). The Hearing /
+       Shedding stack sits to its right, pinned to the field's right edge. */
+    .draw-secret { margin-top: 88px; display: flex; align-items: center; }
+    .draw-secret > .draw-item { width: calc(43.57% - 39.5px); }
+    /* Perfectionism, sized responsively (started at 1.2 × Shadow's Hand, then
+       +30%). Auto side margins centre it in the free space right of A Secret. */
+    .draw-secret__stack { width: calc(41.18% - 45.76px); margin-top: 0; margin-left: auto; margin-right: auto; position: relative; left: 51px; }
     /* lift via margin (transform is used by the reveal animation) */
     .draw-item--raise { margin-top: -44px; }
     .draw-item--reduce { margin-top: -34px; }

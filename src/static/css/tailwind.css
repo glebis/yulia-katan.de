@@ -34,7 +34,7 @@ h1 {
 /* Shared project (gallery section) title style: thin + 40% smaller.
    Applies to every page with `path: gallery`, current and future. */
 .section-gallery h1 strong {
-  font-weight: 300;
+  font-weight: 200;
   font-size: 60%;
 }
 
